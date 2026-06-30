@@ -2,6 +2,8 @@ import Link from "next/link";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { DownloadButton } from "@/components/DownloadButton";
+import { PhoneFrame, QuizScreen } from "@/components/showcase/PhoneFrame";
+import { FloatingCard } from "@/components/showcase/FloatingCard";
 import { GAMES, HAS_DOWNLOAD } from "@/lib/links";
 
 const STEPS = [
@@ -29,41 +31,37 @@ export default function Home() {
           {/* accent glow */}
           <div
             aria-hidden
-            className="pointer-events-none absolute -top-40 left-1/2 h-[420px] w-[760px] -translate-x-1/2 rounded-full bg-accent/25 blur-[120px]"
+            className="pointer-events-none absolute -top-40 left-1/2 h-[460px] w-[820px] -translate-x-1/2 rounded-full bg-accent/25 blur-[130px]"
           />
-          <div className="relative mx-auto grid w-full max-w-5xl items-center gap-12 px-6 pb-16 pt-16 sm:pt-24 lg:grid-cols-[1.05fr_0.95fr]">
-            <div className="animate-rise">
-              <p className="text-sm font-medium text-accent-ink/80">
-                Multiplayer football party game · iOS
-              </p>
-              <h1 className="mt-4 text-balance text-5xl font-medium leading-[1.05] tracking-tight sm:text-6xl">
-                Football games you play with your mates.
-              </h1>
-              <p className="mt-6 max-w-md text-lg leading-relaxed text-muted">
-                Join a room with a code and settle who really knows their
-                football. Three quick games, live scores, zero setup.
-              </p>
-              <div className="mt-9 flex flex-wrap items-center gap-4">
-                <DownloadButton />
-                <Link
-                  href="#games"
-                  className="rounded-button border border-divider px-6 py-3.5 font-medium text-ink transition-colors hover:border-muted"
-                >
-                  See the games
-                </Link>
-              </div>
-              {!HAS_DOWNLOAD && (
-                <p className="mt-4 text-sm text-muted">
-                  Public beta opens soon. Leave a note and we&apos;ll send an
-                  invite.
-                </p>
-              )}
+          <div className="relative mx-auto w-full max-w-5xl px-6 pb-8 pt-16 text-center sm:pt-24">
+            <p className="animate-rise text-sm font-medium text-accent-ink/80">
+              Multiplayer football party game · iOS
+            </p>
+            <h1 className="mx-auto mt-4 max-w-3xl animate-rise text-balance text-5xl font-medium leading-[1.04] tracking-tight [animation-delay:60ms] sm:text-7xl">
+              Football games you play with your mates.
+            </h1>
+            <p className="mx-auto mt-6 max-w-xl animate-rise text-lg leading-relaxed text-muted [animation-delay:120ms]">
+              Join a room with a code and settle who really knows their football.
+              Three quick games, live scores, zero setup.
+            </p>
+            <div className="mt-9 flex animate-rise flex-wrap items-center justify-center gap-4 [animation-delay:180ms]">
+              <DownloadButton />
+              <Link
+                href="#games"
+                className="rounded-button border border-divider px-6 py-3.5 font-medium text-ink transition-colors hover:border-muted"
+              >
+                See the games
+              </Link>
             </div>
-
-            <div className="animate-rise [animation-delay:120ms]">
-              <QuizMock />
-            </div>
+            {!HAS_DOWNLOAD && (
+              <p className="mt-4 animate-rise text-sm text-muted [animation-delay:180ms]">
+                Public beta opens soon. Leave a note and we&apos;ll send an invite.
+              </p>
+            )}
           </div>
+
+          {/* iPhone showcase + floating app components */}
+          <Showcase />
         </section>
 
         {/* Games */}
@@ -138,62 +136,100 @@ export default function Home() {
   );
 }
 
-/** A stylised mock of the in-app quiz screen, in the app's own colours. */
-function QuizMock() {
-  const options = [
-    { label: "Leicester City", correct: false },
-    { label: "Chelsea", correct: true },
-    { label: "Arsenal", correct: false },
-    { label: "Everton", correct: false },
-  ];
+/**
+ * The hero showcase: a phone running the quiz, ringed by "isolated" app
+ * components. The floating cards only appear on lg+ so small screens stay
+ * clean (just the phone) without overflow.
+ */
+function Showcase() {
   return (
-    <div className="mx-auto w-full max-w-[320px] rounded-[2.2rem] border border-divider bg-surface p-3 shadow-2xl shadow-black/60">
-      <div className="rounded-[1.6rem] bg-bg p-5">
-        <div className="flex items-center justify-between text-xs text-muted">
-          <span className="rounded-full bg-surface-2 px-3 py-1 font-mono tracking-widest text-ink">
-            ABCD
-          </span>
-          <span>Question 4 / 10</span>
-        </div>
-
-        <p className="mt-6 text-lg font-medium leading-snug">
-          Which club did N&apos;Golo Kanté join in 2016?
-        </p>
-
-        <div className="mt-5 flex flex-col gap-2.5">
-          {options.map((o) => (
-            <div
-              key={o.label}
-              className={`flex items-center justify-between rounded-button px-4 py-3 text-sm ${
-                o.correct ? "bg-accent text-white" : "bg-surface-2 text-muted"
-              }`}
-            >
-              <span>{o.label}</span>
-              {o.correct && (
-                <svg
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  aria-hidden
-                >
-                  <path
-                    d="M5 12.5l4.5 4.5L19 7"
-                    stroke="currentColor"
-                    strokeWidth="2.4"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              )}
+    <div className="relative mx-auto mt-10 w-full max-w-3xl px-6 pb-16">
+      <div className="relative animate-rise [animation-delay:240ms]">
+        {/* room code */}
+        <FloatingCard className="left-0 top-12 hidden lg:block" delay={460}>
+          <div className="flex items-center gap-3">
+            <span className="rounded-lg bg-surface-2 px-2.5 py-1 font-mono text-sm tracking-widest text-ink">
+              ABCD
+            </span>
+            <div>
+              <p className="text-xs font-medium text-ink">Room is live</p>
+              <p className="text-[11px] text-muted">4 players joined</p>
             </div>
-          ))}
-        </div>
+          </div>
+        </FloatingCard>
 
-        <div className="mt-6 flex items-center justify-between text-xs text-muted">
-          <span>+250 speed bonus</span>
-          <span className="text-success">You&apos;re 1st</span>
-        </div>
+        {/* correct-answer toast */}
+        <FloatingCard className="right-0 top-6 hidden lg:block" delay={560}>
+          <div className="flex items-center gap-2.5">
+            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-accent text-white">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden>
+                <path
+                  d="M5 12.5l4.5 4.5L19 7"
+                  stroke="currentColor"
+                  strokeWidth="2.6"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </span>
+            <div>
+              <p className="text-xs font-medium text-ink">+250 speed bonus</p>
+              <p className="text-[11px] text-muted">Fastest correct answer</p>
+            </div>
+          </div>
+        </FloatingCard>
+
+        {/* game switcher */}
+        <FloatingCard className="bottom-24 left-0 hidden lg:block" delay={660}>
+          <p className="text-[11px] font-medium text-muted">Pick a game</p>
+          <div className="mt-2 flex flex-wrap gap-1.5 text-xs">
+            <span className="rounded-full bg-accent px-2.5 py-1 font-medium text-white">
+              Quiz
+            </span>
+            <span className="rounded-full bg-surface-2 px-2.5 py-1 text-muted">
+              Odd One Out
+            </span>
+            <span className="rounded-full bg-surface-2 px-2.5 py-1 text-muted">
+              Missing XI
+            </span>
+          </div>
+        </FloatingCard>
+
+        {/* leaderboard */}
+        <FloatingCard className="bottom-14 right-0 hidden lg:block" delay={760}>
+          <p className="text-[11px] font-medium text-muted">Leaderboard</p>
+          <div className="mt-2 flex w-40 flex-col gap-1.5 text-sm">
+            <div className="flex items-center justify-between text-success">
+              <span className="font-medium">1. You</span>
+              <span className="font-mono">1,840</span>
+            </div>
+            <div className="flex items-center justify-between text-muted">
+              <span>2. Sam</span>
+              <span className="font-mono">1,610</span>
+            </div>
+            <div className="flex items-center justify-between text-muted">
+              <span>3. Priya</span>
+              <span className="font-mono">1,455</span>
+            </div>
+          </div>
+        </FloatingCard>
+
+        {/* player joined */}
+        <FloatingCard
+          className="inset-x-0 bottom-0 mx-auto hidden w-fit lg:block"
+          delay={860}
+        >
+          <div className="flex items-center gap-2.5">
+            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-accent/20 text-xs font-medium text-accent-ink">
+              JL
+            </span>
+            <p className="text-xs font-medium text-ink">Jess joined the room</p>
+          </div>
+        </FloatingCard>
+
+        <PhoneFrame>
+          <QuizScreen />
+        </PhoneFrame>
       </div>
     </div>
   );

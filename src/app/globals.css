@@ -20,6 +20,7 @@
   --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
 
   --animate-rise: rise 0.7s var(--ease-out-quint) both;
+  --animate-float: float 6s ease-in-out infinite;
 }
 
 @keyframes rise {
@@ -30,6 +31,17 @@
   to {
     opacity: 1;
     transform: none;
+  }
+}
+
+/* Gentle idle drift for the floating showcase cards. */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(-5px);
+  }
+  50% {
+    transform: translateY(5px);
   }
 }
 
