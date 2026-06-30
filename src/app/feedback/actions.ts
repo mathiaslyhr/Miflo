@@ -1,6 +1,7 @@
 "use server";
 
 import { createAnonClient } from "@/lib/supabaseServer";
+import { notifyNewFeedback } from "@/lib/notify";
 
 export type FeedbackState = {
   status: "idle" | "success" | "error";
@@ -51,6 +52,9 @@ export async function submitFeedbackAction(
       p_source: "web",
     });
     if (error) throw error;
+
+    // Best-effort owner notification; never blocks a successful submission.
+    await notifyNewFeedback(category, message);
 
     return { status: "success" };
   } catch {
