@@ -34,13 +34,13 @@ export function SiteHeader() {
 
           {/* CTAs */}
           <div className="flex items-center justify-end gap-2 sm:gap-3">
+            <DownloadButton className="!px-4 !py-2 text-sm" />
             <Link
               href="/#games"
               className="hidden rounded-button border border-accent/60 px-4 py-2 text-sm font-medium text-accent-ink transition-colors hover:border-accent hover:text-ink sm:inline-flex"
             >
               See the games
             </Link>
-            <DownloadButton className="!px-4 !py-2 text-sm" />
           </div>
         </div>
       </header>
