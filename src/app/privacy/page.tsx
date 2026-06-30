@@ -24,7 +24,7 @@ function Section({
   children: ReactNode;
 }) {
   return (
-    <section id={id} className="scroll-mt-24 border-t border-divider pt-10">
+    <section id={id} className="scroll-mt-24 pt-10">
       <h2 className="flex items-baseline gap-3 text-xl font-medium tracking-tight">
         <span aria-hidden className="h-4 w-0.5 shrink-0 rounded bg-accent" />
         {title}
@@ -47,7 +47,7 @@ export default function PrivacyPage() {
       <SiteHeader />
       <main className="flex-1">
         {/* Hero header */}
-        <section className="relative overflow-hidden border-b border-divider">
+        <section className="relative overflow-hidden">
           <div
             aria-hidden
             className="pointer-events-none absolute -top-32 left-1/2 h-[340px] w-[640px] -translate-x-1/2 rounded-full bg-accent/20 blur-[120px]"
@@ -72,9 +72,9 @@ export default function PrivacyPage() {
             {GLANCE.map((item) => (
               <div
                 key={item.title}
-                className="rounded-card border border-divider bg-surface/50 p-5"
+                className="flex items-start gap-4 rounded-card border border-divider bg-surface/50 p-5"
               >
-                <div className="flex h-9 w-9 items-center justify-center rounded-full bg-accent/15 text-accent-ink">
+                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-accent/15 text-accent-ink">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
                     <path
                       d="M5 12.5l4.5 4.5L19 7"
@@ -85,10 +85,12 @@ export default function PrivacyPage() {
                     />
                   </svg>
                 </div>
-                <h3 className="mt-3 font-medium text-ink">{item.title}</h3>
-                <p className="mt-1 text-sm leading-relaxed text-muted">
-                  {item.body}
-                </p>
+                <div>
+                  <h3 className="font-medium text-ink">{item.title}</h3>
+                  <p className="mt-1 text-sm leading-relaxed text-muted">
+                    {item.body}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
