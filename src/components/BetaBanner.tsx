@@ -20,7 +20,7 @@ export function BetaBanner() {
         <p className="truncate">
           Miflo is in public beta — invites are rolling out.{" "}
           <Link
-            href="/feedback"
+            href="/notify"
             className="font-medium underline underline-offset-2 hover:no-underline"
           >
             Get an invite →

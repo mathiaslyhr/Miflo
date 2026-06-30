@@ -19,25 +19,25 @@ export function PhoneFrame({ children }: { children: ReactNode }) {
         {/* screen */}
         <div className="relative flex aspect-[9/19.5] flex-col overflow-hidden rounded-[2.05rem] bg-[#141418]">
           {/* dynamic island */}
-          <div className="pointer-events-none absolute left-1/2 top-2.5 z-10 h-7 w-24 -translate-x-1/2 rounded-full bg-black" />
+          <div className="pointer-events-none absolute left-1/2 top-2.5 z-10 h-6 w-[68px] -translate-x-1/2 rounded-full bg-black" />
 
-          {/* status bar */}
-          <div className="flex items-center justify-between px-5 pt-3 text-[11px] font-medium text-ink">
+          {/* status bar — kept clear of the island so nothing peeks behind it */}
+          <div className="flex items-center justify-between px-4 pt-3 text-[11px] font-medium text-ink">
             <span>9:41</span>
-            <span className="flex items-center gap-1.5" aria-hidden>
+            <span className="flex items-center gap-1" aria-hidden>
               {/* signal */}
-              <svg width="17" height="11" viewBox="0 0 17 11" fill="currentColor">
+              <svg width="15" height="10" viewBox="0 0 17 11" fill="currentColor">
                 <rect x="0" y="7" width="3" height="4" rx="1" />
                 <rect x="4.5" y="5" width="3" height="6" rx="1" />
                 <rect x="9" y="2.5" width="3" height="8.5" rx="1" />
                 <rect x="13.5" y="0" width="3" height="11" rx="1" />
               </svg>
               {/* wifi */}
-              <svg width="16" height="11" viewBox="0 0 16 12" fill="currentColor">
+              <svg width="14" height="10" viewBox="0 0 16 12" fill="currentColor">
                 <path d="M8 2.2c2.5 0 4.8 1 6.5 2.6l-1.5 1.6A7.1 7.1 0 0 0 8 4.5c-2 0-3.8.8-5 2L1.5 4.8A9.2 9.2 0 0 1 8 2.2Zm0 3.4c1.4 0 2.7.5 3.6 1.5l-1.5 1.5A3 3 0 0 0 8 8c-.8 0-1.6.3-2.1.8L4.4 7.3A5 5 0 0 1 8 5.6Zm0 3.3c.6 0 1.1.2 1.5.6L8 10.8 6.5 9.5c.4-.4.9-.6 1.5-.6Z" />
               </svg>
               {/* battery */}
-              <svg width="25" height="12" viewBox="0 0 25 12" fill="none">
+              <svg width="20" height="10" viewBox="0 0 25 12" fill="none">
                 <rect
                   x="0.5"
                   y="0.5"
