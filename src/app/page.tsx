@@ -1,10 +1,9 @@
-import Link from "next/link";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { DownloadButton } from "@/components/DownloadButton";
 import { PhoneFrame, QuizScreen } from "@/components/showcase/PhoneFrame";
 import { FloatingCard } from "@/components/showcase/FloatingCard";
-import { GAMES, HAS_DOWNLOAD } from "@/lib/links";
+import { GAMES } from "@/lib/links";
 
 const STEPS = [
   {
@@ -44,20 +43,6 @@ export default function Home() {
               Join a room with a code and settle who really knows their football.
               Three quick games, live scores, zero setup.
             </p>
-            <div className="mt-8 flex animate-rise flex-wrap items-center justify-center gap-4 [animation-delay:180ms]">
-              <DownloadButton />
-              <Link
-                href="#games"
-                className="rounded-button border border-divider px-6 py-3.5 font-medium text-ink transition-colors hover:border-muted"
-              >
-                See the games
-              </Link>
-            </div>
-            {!HAS_DOWNLOAD && (
-              <p className="mt-4 animate-rise text-sm text-muted [animation-delay:180ms]">
-                Public beta opens soon. Leave a note and we&apos;ll send an invite.
-              </p>
-            )}
 
             {/* iPhone showcase + floating app components */}
             <Showcase />
@@ -97,7 +82,7 @@ export default function Home() {
         </section>
 
         {/* How it works */}
-        <section className="border-t border-divider bg-surface/40">
+        <section id="how" className="scroll-mt-20 border-t border-divider bg-surface/40">
           <div className="mx-auto w-full max-w-5xl px-6 py-20">
             <h2 className="text-3xl font-medium tracking-tight sm:text-4xl">
               Up and running in seconds
@@ -143,10 +128,10 @@ export default function Home() {
  */
 function Showcase() {
   return (
-    <div className="relative mx-auto mt-8 w-[260px]">
+    <div className="relative mx-auto mt-12 w-[260px]">
       <div className="relative animate-rise [animation-delay:240ms]">
         {/* room code */}
-        <FloatingCard className="-left-48 top-6 hidden lg:block" delay={460}>
+        <FloatingCard className="-left-72 top-8 hidden lg:block" delay={460}>
           <div className="flex items-center gap-3">
             <span className="rounded-lg bg-surface-2 px-2.5 py-1 font-mono text-sm tracking-widest text-ink">
               ABCD
@@ -159,7 +144,7 @@ function Showcase() {
         </FloatingCard>
 
         {/* correct-answer toast */}
-        <FloatingCard className="-right-52 top-4 hidden lg:block" delay={560}>
+        <FloatingCard className="-right-72 top-12 hidden lg:block" delay={560}>
           <div className="flex items-center gap-2.5">
             <span className="flex h-7 w-7 items-center justify-center rounded-full bg-accent text-white">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden>
@@ -180,7 +165,10 @@ function Showcase() {
         </FloatingCard>
 
         {/* game switcher */}
-        <FloatingCard className="-left-60 bottom-10 hidden lg:block" delay={660}>
+        <FloatingCard
+          className="-left-80 top-1/2 hidden -translate-y-1/2 lg:block"
+          delay={660}
+        >
           <p className="text-[11px] font-medium text-muted">Pick a game</p>
           <div className="mt-2 flex flex-wrap gap-1.5 text-xs">
             <span className="rounded-full bg-accent px-2.5 py-1 font-medium text-white">
@@ -196,7 +184,7 @@ function Showcase() {
         </FloatingCard>
 
         {/* leaderboard */}
-        <FloatingCard className="-right-48 bottom-16 hidden lg:block" delay={760}>
+        <FloatingCard className="-right-80 bottom-16 hidden lg:block" delay={760}>
           <p className="text-[11px] font-medium text-muted">Leaderboard</p>
           <div className="mt-2 flex w-40 flex-col gap-1.5 text-sm">
             <div className="flex items-center justify-between text-success">
@@ -216,7 +204,7 @@ function Showcase() {
 
         {/* player joined */}
         <FloatingCard
-          className="-bottom-6 -left-10 hidden lg:block"
+          className="-left-56 bottom-6 hidden lg:block"
           delay={860}
         >
           <div className="flex items-center gap-2.5">
