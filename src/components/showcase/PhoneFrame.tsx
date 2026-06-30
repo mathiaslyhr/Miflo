@@ -6,7 +6,7 @@ import type { ReactNode } from "react";
  */
 export function PhoneFrame({ children }: { children: ReactNode }) {
   return (
-    <div className="relative mx-auto w-full max-w-[300px] rounded-[2.6rem] border border-divider bg-surface p-2.5 shadow-2xl shadow-black/60">
+    <div className="relative mx-auto w-full max-w-[260px] rounded-[2.4rem] border border-divider bg-surface p-2 shadow-2xl shadow-black/60">
       <div className="relative overflow-hidden rounded-[2.1rem] bg-bg">
         {/* dynamic island */}
         <div className="pointer-events-none absolute left-1/2 top-2.5 z-10 h-6 w-24 -translate-x-1/2 rounded-full bg-black" />
@@ -52,7 +52,7 @@ export function PhoneFrame({ children }: { children: ReactNode }) {
         </div>
 
         {/* screen content */}
-        <div className="px-5 pb-7 pt-6">{children}</div>
+        <div className="px-4 pb-6 pt-5">{children}</div>
       </div>
     </div>
   );
@@ -64,7 +64,6 @@ export function QuizScreen() {
     { label: "Leicester City", correct: false },
     { label: "Chelsea", correct: true },
     { label: "Arsenal", correct: false },
-    { label: "Everton", correct: false },
   ];
   return (
     <div>
@@ -75,21 +74,21 @@ export function QuizScreen() {
         <span>Question 4 / 10</span>
       </div>
 
-      <p className="mt-6 text-lg font-medium leading-snug">
+      <p className="mt-5 text-base font-medium leading-snug">
         Which club did N&apos;Golo Kant&eacute; join in 2016?
       </p>
 
-      <div className="mt-5 flex flex-col gap-2.5">
+      <div className="mt-4 flex flex-col gap-2">
         {options.map((o) => (
           <div
             key={o.label}
-            className={`flex items-center justify-between rounded-button px-4 py-3 text-sm ${
+            className={`flex items-center justify-between rounded-button px-4 py-2.5 text-sm ${
               o.correct ? "bg-accent text-white" : "bg-surface-2 text-muted"
             }`}
           >
             <span>{o.label}</span>
             {o.correct && (
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden>
                 <path
                   d="M5 12.5l4.5 4.5L19 7"
                   stroke="currentColor"
@@ -101,11 +100,6 @@ export function QuizScreen() {
             )}
           </div>
         ))}
-      </div>
-
-      <div className="mt-6 flex items-center justify-between text-xs text-muted">
-        <span>+250 speed bonus</span>
-        <span className="text-success">You&apos;re 1st</span>
       </div>
     </div>
   );
