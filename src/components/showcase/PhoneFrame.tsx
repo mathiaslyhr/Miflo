@@ -17,9 +17,9 @@ export function PhoneFrame({ children }: { children: ReactNode }) {
       {/* titanium frame */}
       <div className="relative rounded-[2.7rem] bg-[#1c1c1e] p-[10px] shadow-[0_40px_90px_-25px_rgba(0,0,0,0.85)] ring-1 ring-inset ring-white/10">
         {/* screen */}
-        <div className="relative flex aspect-[9/19.5] flex-col overflow-hidden rounded-[2.05rem] bg-[#0c0c0e]">
+        <div className="relative flex aspect-[9/19.5] flex-col overflow-hidden rounded-[2.05rem] bg-[#141418]">
           {/* dynamic island */}
-          <div className="pointer-events-none absolute left-1/2 top-2.5 z-10 h-7 w-24 -translate-x-1/2 rounded-full bg-black ring-1 ring-white/10" />
+          <div className="pointer-events-none absolute left-1/2 top-2.5 z-10 h-7 w-24 -translate-x-1/2 rounded-full bg-black" />
 
           {/* status bar */}
           <div className="flex items-center justify-between px-5 pt-3 text-[11px] font-medium text-ink">

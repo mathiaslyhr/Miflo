@@ -72,9 +72,9 @@ export default function PrivacyPage() {
             {GLANCE.map((item) => (
               <div
                 key={item.title}
-                className="flex items-start gap-4 rounded-card border border-divider bg-surface/50 p-5"
+                className="flex items-center gap-4 rounded-card border border-divider bg-surface/50 p-5"
               >
-                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-accent/15 text-accent-ink">
+                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-accent/15 text-accent">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
                     <path
                       d="M5 12.5l4.5 4.5L19 7"
