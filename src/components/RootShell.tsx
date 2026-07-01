@@ -27,7 +27,7 @@ export function RootShell({ children }: { children: React.ReactNode }) {
 
   return (
     <>
-      <div className="relative z-10 flex flex-1 flex-col rounded-b-[44px] bg-bg">
+      <div className="relative z-10 flex flex-1 flex-col rounded-b-[28px] bg-bg">
         {children}
       </div>
       {/* reserves scroll room so the fixed footer can be revealed underneath */}

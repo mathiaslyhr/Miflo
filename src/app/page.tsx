@@ -89,7 +89,7 @@ export default function Home() {
             <ol className="mt-12 grid gap-8 sm:grid-cols-3">
               {STEPS.map((step, i) => (
                 <li key={step.title}>
-                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-accent/15 font-medium text-accent">
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-accent bg-accent/15 font-medium text-accent">
                     {i + 1}
                   </div>
                   <h3 className="mt-4 text-lg font-medium">{step.title}</h3>
