@@ -1,5 +1,4 @@
 import { SiteHeader } from "@/components/SiteHeader";
-import { SiteFooter } from "@/components/SiteFooter";
 import { DownloadButton } from "@/components/DownloadButton";
 import { PhoneFrame, QuizScreen } from "@/components/showcase/PhoneFrame";
 import { FloatingCard } from "@/components/showcase/FloatingCard";
@@ -50,7 +49,7 @@ export default function Home() {
         </section>
 
         {/* Games */}
-        <section id="games" className="scroll-mt-20 border-t border-divider">
+        <section id="games" className="scroll-mt-20">
           <div className="mx-auto w-full max-w-5xl px-6 py-20">
             <h2 className="max-w-xl text-3xl font-medium tracking-tight sm:text-4xl">
               Three games. One room.
@@ -82,7 +81,7 @@ export default function Home() {
         </section>
 
         {/* How it works */}
-        <section id="how" className="scroll-mt-20 border-t border-divider bg-surface/40">
+        <section id="how" className="scroll-mt-20">
           <div className="mx-auto w-full max-w-5xl px-6 py-20">
             <h2 className="text-3xl font-medium tracking-tight sm:text-4xl">
               Up and running in seconds
@@ -90,7 +89,7 @@ export default function Home() {
             <ol className="mt-12 grid gap-8 sm:grid-cols-3">
               {STEPS.map((step, i) => (
                 <li key={step.title}>
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-accent/15 font-medium text-accent-ink">
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-accent/15 font-medium text-accent">
                     {i + 1}
                   </div>
                   <h3 className="mt-4 text-lg font-medium">{step.title}</h3>
@@ -102,7 +101,7 @@ export default function Home() {
         </section>
 
         {/* Final CTA */}
-        <section className="border-t border-divider">
+        <section>
           <div className="mx-auto w-full max-w-5xl px-6 py-20 text-center">
             <h2 className="mx-auto max-w-2xl text-balance text-3xl font-medium tracking-tight sm:text-4xl">
               Round up your group chat.
@@ -116,7 +115,6 @@ export default function Home() {
           </div>
         </section>
       </main>
-      <SiteFooter />
     </>
   );
 }

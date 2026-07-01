@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { SiteHeader } from "@/components/SiteHeader";
-import { SiteFooter } from "@/components/SiteFooter";
 import { NotifyForm } from "@/components/NotifyForm";
 
 export const metadata: Metadata = {
@@ -28,7 +27,6 @@ export default function NotifyPage() {
           </div>
         </div>
       </main>
-      <SiteFooter />
     </>
   );
 }

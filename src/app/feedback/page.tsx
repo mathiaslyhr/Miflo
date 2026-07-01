@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { SiteHeader } from "@/components/SiteHeader";
-import { SiteFooter } from "@/components/SiteFooter";
 import { FeedbackForm } from "./FeedbackForm";
 
 export const metadata: Metadata = {
@@ -27,7 +26,6 @@ export default function FeedbackPage() {
           </div>
         </div>
       </main>
-      <SiteFooter />
     </>
   );
 }

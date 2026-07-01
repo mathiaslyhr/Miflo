@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { SiteHeader } from "@/components/SiteHeader";
-import { SiteFooter } from "@/components/SiteFooter";
 import { CONTACT_EMAIL } from "@/lib/links";
 
 export const metadata: Metadata = {
@@ -256,7 +255,6 @@ export default function PrivacyPage() {
           </Section>
         </article>
       </main>
-      <SiteFooter />
     </>
   );
 }

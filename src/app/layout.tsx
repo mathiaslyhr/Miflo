@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { RootShell } from "@/components/RootShell";
 
 const satoshi = localFont({
   src: [
@@ -37,7 +38,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${satoshi.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col bg-bg">
+        <RootShell>{children}</RootShell>
+      </body>
     </html>
   );
 }
