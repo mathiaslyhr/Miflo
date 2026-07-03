@@ -15,7 +15,7 @@ export function BetaBanner() {
   if (HAS_DOWNLOAD || !open) return null;
 
   return (
-    <div className="bg-accent text-white">
+    <div className="bg-[#0d0d16] text-white">
       <div className="relative mx-auto flex h-8 w-full max-w-5xl items-center justify-center px-10 text-xs">
         <p className="truncate">
           Miflo is in public beta — invites are rolling out.{" "}

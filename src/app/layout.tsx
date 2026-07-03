@@ -25,10 +25,16 @@ export const metadata: Metadata = {
     siteName: "Miflo",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Miflo — football games to play with your mates",
+    description:
+      "Fast multiplayer football games for iOS. Join with a code and play together.",
+  },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#000000",
+  themeColor: "#f5f2fc",
 };
 
 export default function RootLayout({

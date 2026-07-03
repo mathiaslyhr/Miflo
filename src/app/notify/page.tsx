@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { SiteHeader } from "@/components/SiteHeader";
 import { NotifyForm } from "@/components/NotifyForm";
+import { Eyebrow } from "@/components/glass";
 
 export const metadata: Metadata = {
   title: "Get notified — Miflo",
@@ -12,13 +13,16 @@ export default function NotifyPage() {
   return (
     <>
       <SiteHeader />
-      <main className="flex-1">
-        <div className="mx-auto w-full max-w-xl px-6 py-16 sm:py-20">
-          <p className="text-sm font-medium text-accent-ink/80">Beta</p>
-          <h1 className="mt-3 text-4xl font-medium tracking-tight">
+      <main className="relative flex-1 overflow-hidden">
+        <div className="relative mx-auto w-full max-w-xl px-6 py-16 sm:py-24">
+          <Eyebrow>Beta</Eyebrow>
+          <h1
+            className="mt-4 font-medium leading-[1.05] tracking-tight text-[#0d0d16]"
+            style={{ fontSize: "clamp(2.25rem,6vw,3.5rem)" }}
+          >
             Get the beta invite
           </h1>
-          <p className="mt-4 text-lg leading-relaxed text-muted">
+          <p className="mt-4 text-lg leading-relaxed text-[#0d0d16]/55">
             Miflo is in public beta and invites are rolling out. Leave your email
             and we&apos;ll let you know the moment you can play.
           </p>

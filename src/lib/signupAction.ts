@@ -12,10 +12,13 @@ export type SignupState = {
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 /**
- * Beta waitlist signup. Until we have a real newsletter, the email is stored
- * through the same `submit_feedback` RPC the iOS app and feedback form use
- * (tagged so it's easy to filter), plus a best-effort owner notification. No
- * schema change needed — this gets swapped for a dedicated signups table later.
+ * Beta waitlist signup. Stores the email in the dedicated `waitlist` table via
+ * the `join_waitlist` RPC (SECURITY DEFINER — the anon key can add but never
+ * read the list; duplicates are ignored), plus a best-effort owner
+ * notification.
+ *
+ * Requires the `supabase/migrations/20260702_waitlist.sql` migration to be
+ * applied first (the DB is not linked locally — apply it via the dashboard).
  */
 export async function submitSignupAction(
   _prev: SignupState,
@@ -40,10 +43,8 @@ export async function submitSignupAction(
     const { error: authError } = await supabase.auth.signInAnonymously();
     if (authError) throw authError;
 
-    const { error } = await supabase.rpc("submit_feedback", {
-      p_category: "general",
-      p_message: `Beta waitlist signup: ${email}`,
-      p_app_version: "web-signup",
+    const { error } = await supabase.rpc("join_waitlist", {
+      p_email: email,
       p_source: "web",
     });
     if (error) throw error;

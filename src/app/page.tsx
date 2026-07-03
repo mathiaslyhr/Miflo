@@ -2,6 +2,7 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { DownloadButton } from "@/components/DownloadButton";
 import { PhoneFrame, QuizScreen } from "@/components/showcase/PhoneFrame";
 import { FloatingCard } from "@/components/showcase/FloatingCard";
+import { Eyebrow, OutlineButton } from "@/components/glass";
 import { GAMES } from "@/lib/links";
 
 const STEPS = [
@@ -23,22 +24,23 @@ export default function Home() {
   return (
     <>
       <SiteHeader />
-      <main className="flex-1">
-        {/* Hero */}
-        <section className="relative overflow-hidden">
-          {/* accent glow */}
-          <div
-            aria-hidden
-            className="pointer-events-none absolute -top-32 left-1/2 h-[420px] w-[780px] -translate-x-1/2 rounded-full bg-accent/25 blur-[130px]"
-          />
+      <main className="relative flex-1">
+        {/* The page-spanning gradient (PageMesh) is rendered once in RootShell,
+            behind both the content and the footer. Sections stay transparent. */}
+
+        {/* Hero — pink zone */}
+        <section className="relative">
           <div className="relative mx-auto flex min-h-[calc(100svh-4rem)] w-full max-w-5xl flex-col items-center justify-center px-6 py-12 text-center">
-            <p className="animate-rise text-sm font-medium text-accent-ink/80">
-              Multiplayer football party game · iOS
-            </p>
-            <h1 className="mx-auto mt-4 max-w-3xl animate-rise text-balance text-5xl font-medium leading-[1.04] tracking-tight [animation-delay:60ms] sm:text-6xl">
+            <div className="animate-rise">
+              <Eyebrow>Multiplayer football party game · iOS</Eyebrow>
+            </div>
+            <h1
+              className="mx-auto mt-5 max-w-3xl animate-rise text-balance font-medium leading-[1.02] tracking-tight text-[#0d0d16] [animation-delay:60ms]"
+              style={{ fontSize: "clamp(2.75rem,7vw,5rem)" }}
+            >
               Football games you play with your mates.
             </h1>
-            <p className="mx-auto mt-5 max-w-xl animate-rise text-lg leading-relaxed text-muted [animation-delay:120ms]">
+            <p className="mx-auto mt-5 max-w-xl animate-rise text-base leading-relaxed text-[#0d0d16]/55 [animation-delay:120ms] sm:text-lg">
               Join a room with a code and settle who really knows their football.
               Three quick games, live scores, zero setup.
             </p>
@@ -48,30 +50,34 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Games */}
-        <section id="games" className="scroll-mt-20">
-          <div className="mx-auto w-full max-w-5xl px-6 py-20">
-            <h2 className="max-w-xl text-3xl font-medium tracking-tight sm:text-4xl">
+        {/* Games — periwinkle zone */}
+        <section id="games" className="relative scroll-mt-20">
+          <div className="relative mx-auto w-full max-w-5xl px-6 py-24">
+            <Eyebrow>The games</Eyebrow>
+            <h2
+              className="mt-4 max-w-xl font-medium leading-[1.05] tracking-tight text-[#0d0d16]"
+              style={{ fontSize: "clamp(2rem,5vw,3.25rem)" }}
+            >
               Three games. One room.
             </h2>
-            <p className="mt-3 max-w-md text-muted">
+            <p className="mt-3 max-w-md text-[#0d0d16]/55">
               Same lobby, same friends. Pick a game and pass the phone or play
               from your own.
             </p>
 
-            <div className="mt-12 flex flex-col divide-y divide-divider">
+            <div className="mt-12 flex flex-col divide-y divide-[#0d0d16]/10">
               {GAMES.map((game, i) => (
                 <article
                   key={game.name}
                   className="flex flex-col gap-2 py-8 sm:flex-row sm:items-baseline sm:gap-10"
                 >
-                  <span className="font-mono text-sm text-accent-ink/60 sm:w-10">
+                  <span className="font-mono text-sm text-[#0d0d16] sm:w-10">
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <h3 className="text-2xl font-medium tracking-tight sm:w-56 sm:shrink-0">
+                  <h3 className="text-2xl font-medium tracking-tight text-[#0d0d16] sm:w-56 sm:shrink-0">
                     {game.name}
                   </h3>
-                  <p className="max-w-md leading-relaxed text-muted">
+                  <p className="max-w-md leading-relaxed text-[#0d0d16]/55">
                     {game.blurb}
                   </p>
                 </article>
@@ -80,37 +86,51 @@ export default function Home() {
           </div>
         </section>
 
-        {/* How it works */}
-        <section id="how" className="scroll-mt-20">
-          <div className="mx-auto w-full max-w-5xl px-6 py-20">
-            <h2 className="text-3xl font-medium tracking-tight sm:text-4xl">
+        {/* How it works — sky zone */}
+        <section id="how" className="relative scroll-mt-20">
+          <div className="relative mx-auto w-full max-w-5xl px-6 py-24">
+            <Eyebrow>How it works</Eyebrow>
+            <h2
+              className="mt-4 font-medium leading-[1.05] tracking-tight text-[#0d0d16]"
+              style={{ fontSize: "clamp(2rem,5vw,3.25rem)" }}
+            >
               Up and running in seconds
             </h2>
             <ol className="mt-12 grid gap-8 sm:grid-cols-3">
               {STEPS.map((step, i) => (
                 <li key={step.title}>
-                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-accent bg-accent/15 font-medium text-accent">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/60 bg-white/50 font-medium text-[#0d0d16] shadow-[0_8px_20px_-10px_rgba(20,15,50,0.25)] backdrop-blur-md">
                     {i + 1}
                   </div>
-                  <h3 className="mt-4 text-lg font-medium">{step.title}</h3>
-                  <p className="mt-2 leading-relaxed text-muted">{step.body}</p>
+                  <h3 className="mt-4 text-lg font-medium text-[#0d0d16]">
+                    {step.title}
+                  </h3>
+                  <p className="mt-2 leading-relaxed text-[#0d0d16]/55">
+                    {step.body}
+                  </p>
                 </li>
               ))}
             </ol>
           </div>
         </section>
 
-        {/* Final CTA */}
-        <section>
-          <div className="mx-auto w-full max-w-5xl px-6 py-20 text-center">
-            <h2 className="mx-auto max-w-2xl text-balance text-3xl font-medium tracking-tight sm:text-4xl">
+        {/* Final CTA — sand zone */}
+        <section className="relative">
+          <div className="relative mx-auto w-full max-w-5xl px-6 py-28 text-center">
+            <h2
+              className="mx-auto max-w-2xl text-balance font-medium leading-[1.05] tracking-tight text-[#0d0d16]"
+              style={{ fontSize: "clamp(2rem,5vw,3.25rem)" }}
+            >
               Round up your group chat.
             </h2>
-            <p className="mx-auto mt-4 max-w-md text-muted">
+            <p className="mx-auto mt-4 max-w-md text-[#0d0d16]/55">
               Miflo is best with a few mates and something to prove.
             </p>
-            <div className="mt-8 flex justify-center">
+            <div className="mt-8 flex justify-center gap-3">
               <DownloadButton />
+              <OutlineButton href="/#games" className="!px-6 !py-3.5">
+                See the games
+              </OutlineButton>
             </div>
           </div>
         </section>
@@ -131,12 +151,12 @@ function Showcase() {
         {/* room code */}
         <FloatingCard className="-left-72 top-8 hidden lg:block" delay={460}>
           <div className="flex items-center gap-3">
-            <span className="rounded-lg bg-surface-2 px-2.5 py-1 font-mono text-sm tracking-widest text-ink">
+            <span className="rounded-lg bg-[#f1eefb] px-2.5 py-1 font-mono text-sm tracking-widest text-[#0d0d16]">
               ABCD
             </span>
             <div>
-              <p className="text-xs font-medium text-ink">Room is live</p>
-              <p className="text-[11px] text-muted">4 players joined</p>
+              <p className="text-xs font-medium text-[#0d0d16]">Room is live</p>
+              <p className="text-[11px] text-[#0d0d16]/50">4 players joined</p>
             </div>
           </div>
         </FloatingCard>
@@ -144,7 +164,7 @@ function Showcase() {
         {/* correct-answer toast */}
         <FloatingCard className="-right-72 top-12 hidden lg:block" delay={560}>
           <div className="flex items-center gap-2.5">
-            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-accent text-white">
+            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#0d0d16] text-white">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden>
                 <path
                   d="M5 12.5l4.5 4.5L19 7"
@@ -156,8 +176,8 @@ function Showcase() {
               </svg>
             </span>
             <div>
-              <p className="text-xs font-medium text-ink">+250 speed bonus</p>
-              <p className="text-[11px] text-muted">Fastest correct answer</p>
+              <p className="text-xs font-medium text-[#0d0d16]">+250 speed bonus</p>
+              <p className="text-[11px] text-[#0d0d16]/50">Fastest correct answer</p>
             </div>
           </div>
         </FloatingCard>
@@ -167,15 +187,15 @@ function Showcase() {
           className="-left-80 top-1/2 hidden -translate-y-1/2 lg:block"
           delay={660}
         >
-          <p className="text-[11px] font-medium text-muted">Pick a game</p>
+          <p className="text-[11px] font-medium text-[#0d0d16]/55">Pick a game</p>
           <div className="mt-2 flex flex-wrap gap-1.5 text-xs">
-            <span className="rounded-full bg-accent px-2.5 py-1 font-medium text-white">
+            <span className="rounded-full bg-[#0d0d16] px-2.5 py-1 font-medium text-white">
               Quiz
             </span>
-            <span className="rounded-full bg-surface-2 px-2.5 py-1 text-muted">
+            <span className="rounded-full bg-[#f1eefb] px-2.5 py-1 text-[#0d0d16]/55">
               Odd One Out
             </span>
-            <span className="rounded-full bg-surface-2 px-2.5 py-1 text-muted">
+            <span className="rounded-full bg-[#f1eefb] px-2.5 py-1 text-[#0d0d16]/55">
               Missing XI
             </span>
           </div>
@@ -183,17 +203,17 @@ function Showcase() {
 
         {/* leaderboard */}
         <FloatingCard className="-right-80 bottom-16 hidden lg:block" delay={760}>
-          <p className="text-[11px] font-medium text-muted">Leaderboard</p>
+          <p className="text-[11px] font-medium text-[#0d0d16]/55">Leaderboard</p>
           <div className="mt-2 flex w-40 flex-col gap-1.5 text-sm">
-            <div className="flex items-center justify-between text-success">
+            <div className="flex items-center justify-between text-[#2a9d5a]">
               <span className="font-medium">1. You</span>
               <span className="font-mono">1,840</span>
             </div>
-            <div className="flex items-center justify-between text-muted">
+            <div className="flex items-center justify-between text-[#0d0d16]/55">
               <span>2. Sam</span>
               <span className="font-mono">1,610</span>
             </div>
-            <div className="flex items-center justify-between text-muted">
+            <div className="flex items-center justify-between text-[#0d0d16]/55">
               <span>3. Priya</span>
               <span className="font-mono">1,455</span>
             </div>
@@ -201,15 +221,12 @@ function Showcase() {
         </FloatingCard>
 
         {/* player joined */}
-        <FloatingCard
-          className="-left-56 bottom-6 hidden lg:block"
-          delay={860}
-        >
+        <FloatingCard className="-left-56 bottom-6 hidden lg:block" delay={860}>
           <div className="flex items-center gap-2.5">
-            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-accent/20 text-xs font-medium text-accent-ink">
+            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#0d0d16]/10 text-xs font-medium text-[#0d0d16]">
               JL
             </span>
-            <p className="text-xs font-medium text-ink">Jess joined the room</p>
+            <p className="text-xs font-medium text-[#0d0d16]">Jess joined the room</p>
           </div>
         </FloatingCard>
 

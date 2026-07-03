@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { SiteHeader } from "@/components/SiteHeader";
+import { Eyebrow, GlassCard } from "@/components/glass";
 import { CONTACT_EMAIL } from "@/lib/links";
 
 export const metadata: Metadata = {
@@ -24,11 +25,13 @@ function Section({
 }) {
   return (
     <section id={id} className="scroll-mt-24 pt-10">
-      <h2 className="flex items-baseline gap-3 text-xl font-medium tracking-tight">
-        <span aria-hidden className="h-4 w-0.5 shrink-0 rounded bg-accent" />
+      <h2 className="flex items-baseline gap-3 text-xl font-medium tracking-tight text-[#0d0d16]">
+        <span aria-hidden className="h-4 w-0.5 shrink-0 rounded bg-[#0d0d16]" />
         {title}
       </h2>
-      <div className="mt-3 space-y-3 leading-relaxed text-muted">{children}</div>
+      <div className="mt-3 space-y-3 leading-relaxed text-[#0d0d16]/60">
+        {children}
+      </div>
     </section>
   );
 }
@@ -47,17 +50,18 @@ export default function PrivacyPage() {
       <main className="flex-1">
         {/* Hero header */}
         <section className="relative overflow-hidden">
-          <div
-            aria-hidden
-            className="pointer-events-none absolute -top-32 left-1/2 h-[340px] w-[640px] -translate-x-1/2 rounded-full bg-accent/20 blur-[120px]"
-          />
-          <div className="relative mx-auto w-full max-w-3xl px-6 py-16 sm:py-20">
-            <p className="text-sm font-medium text-accent-ink/80">Privacy</p>
-            <h1 className="mt-3 text-balance text-4xl font-medium tracking-tight sm:text-5xl">
+          <div className="relative mx-auto w-full max-w-3xl px-6 py-16 sm:py-24">
+            <Eyebrow>Privacy</Eyebrow>
+            <h1
+              className="mt-4 text-balance font-medium leading-[1.05] tracking-tight text-[#0d0d16]"
+              style={{ fontSize: "clamp(2.5rem,6vw,3.75rem)" }}
+            >
               Privacy Policy
             </h1>
-            <p className="mt-3 text-sm text-muted">Last updated {LAST_UPDATED}</p>
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed">
+            <p className="mt-3 text-sm text-[#0d0d16]/50">
+              Last updated {LAST_UPDATED}
+            </p>
+            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-[#0d0d16]/70">
               Miflo is built to need as little of your data as possible. There
               are no user accounts, no tracking, and no advertising. This page
               explains exactly what the app and this website do with information.
@@ -66,14 +70,11 @@ export default function PrivacyPage() {
         </section>
 
         {/* At a glance */}
-        <section className="mx-auto w-full max-w-3xl px-6 pt-12">
+        <section className="relative mx-auto w-full max-w-3xl px-6 pt-12">
           <div className="grid gap-3 sm:grid-cols-2">
             {GLANCE.map((item) => (
-              <div
-                key={item.title}
-                className="flex items-center gap-4 rounded-card border border-divider bg-surface/50 p-5"
-              >
-                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-accent bg-accent/15 text-accent">
+              <GlassCard key={item.title} className="flex items-center gap-4 !p-5">
+                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#0d0d16] text-white">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
                     <path
                       d="M5 12.5l4.5 4.5L19 7"
@@ -85,12 +86,12 @@ export default function PrivacyPage() {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="font-medium text-ink">{item.title}</h3>
-                  <p className="mt-1 text-sm leading-relaxed text-muted">
+                  <h3 className="font-medium text-[#0d0d16]">{item.title}</h3>
+                  <p className="mt-1 text-sm leading-relaxed text-[#0d0d16]/55">
                     {item.body}
                   </p>
                 </div>
-              </div>
+              </GlassCard>
             ))}
           </div>
         </section>

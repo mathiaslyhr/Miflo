@@ -3,6 +3,7 @@
 import { useActionState, useState } from "react";
 import { useFormStatus } from "react-dom";
 import { submitFeedbackAction, type FeedbackState } from "./actions";
+import { GlassCard, GlassSurface } from "@/components/glass";
 
 const CATEGORIES = [
   { value: "general", label: "General" },
@@ -18,7 +19,7 @@ function SubmitButton() {
     <button
       type="submit"
       disabled={pending}
-      className="rounded-button bg-accent px-6 py-3.5 font-medium text-white transition-opacity duration-200 ease-out-quint hover:opacity-90 disabled:opacity-50"
+      className="tap shrink-0 cursor-pointer select-none rounded-full bg-[#0d0d16] px-5 py-2.5 text-sm font-medium text-white shadow-[0_0_0_1.5px_rgba(255,255,255,0.25),0_10px_24px_-12px_rgba(20,15,50,0.5)] transition-transform duration-200 ease-[cubic-bezier(0.34,1.25,0.64,1)] hover:scale-[1.03] active:scale-[0.96] active:opacity-90 disabled:opacity-50"
     >
       {pending ? "Sending…" : "Send feedback"}
     </button>
@@ -31,29 +32,31 @@ export function FeedbackForm() {
 
   if (state.status === "success") {
     return (
-      <div className="rounded-card border border-divider bg-surface p-8 text-center">
-        <h2 className="text-2xl font-medium">Thank you</h2>
-        <p className="mx-auto mt-2 max-w-sm text-muted">
+      <GlassCard className="p-8 text-center">
+        <h2 className="text-2xl font-medium text-[#0d0d16]">Thank you</h2>
+        <p className="mx-auto mt-2 max-w-sm text-[#0d0d16]/55">
           Your feedback helps shape Miflo. We read everything.
         </p>
-      </div>
+      </GlassCard>
     );
   }
 
   return (
     <form action={formAction} className="flex flex-col gap-5">
       <fieldset>
-        <legend className="mb-3 text-sm text-muted">What&apos;s this about?</legend>
+        <legend className="mb-3 text-sm text-[#0d0d16]/55">
+          What&apos;s this about?
+        </legend>
         <div className="grid grid-cols-3 gap-3">
           {CATEGORIES.map((c) => {
             const selected = category === c.value;
             return (
               <label
                 key={c.value}
-                className={`cursor-pointer rounded-button px-4 py-3 text-center transition-colors duration-150 ${
+                className={`tap cursor-pointer select-none rounded-full border px-4 py-3 text-center text-sm font-medium transition-transform duration-200 ease-[cubic-bezier(0.34,1.25,0.64,1)] hover:scale-[1.03] active:scale-[0.96] ${
                   selected
-                    ? "bg-accent text-white"
-                    : "bg-surface text-muted hover:text-ink"
+                    ? "border-transparent bg-[#0d0d16] text-white"
+                    : "border-white/60 bg-white/40 text-[#0d0d16]/60 backdrop-blur-md hover:text-[#0d0d16]"
                 }`}
               >
                 <input
@@ -72,18 +75,23 @@ export function FeedbackForm() {
       </fieldset>
 
       <div>
-        <label htmlFor="message" className="mb-3 block text-sm text-muted">
+        <label
+          htmlFor="message"
+          className="mb-3 block text-sm text-[#0d0d16]/55"
+        >
           Your message
         </label>
-        <textarea
-          id="message"
-          name="message"
-          required
-          maxLength={1000}
-          rows={6}
-          placeholder="Questions, bugs, or things you'd love to see in Miflo"
-          className="w-full resize-y rounded-button border border-divider bg-surface px-4 py-3.5 text-ink placeholder:text-muted/70 focus:border-accent focus:outline-none"
-        />
+        <GlassSurface radiusClass="rounded-3xl" scale={0.28} className="p-1.5">
+          <textarea
+            id="message"
+            name="message"
+            required
+            maxLength={1000}
+            rows={6}
+            placeholder="Questions, bugs, or things you'd love to see in Miflo"
+            className="w-full resize-y rounded-3xl bg-transparent px-4 py-3 text-[#0d0d16] placeholder:text-[#0d0d16]/45 focus:outline-none"
+          />
+        </GlassSurface>
       </div>
 
       {/* Honeypot: hidden from humans, catches bots. */}
@@ -102,7 +110,7 @@ export function FeedbackForm() {
 
       <div className="flex items-center gap-4">
         <SubmitButton />
-        <span className="text-sm text-muted">No account needed.</span>
+        <span className="text-sm text-[#0d0d16]/45">No account needed.</span>
       </div>
     </form>
   );

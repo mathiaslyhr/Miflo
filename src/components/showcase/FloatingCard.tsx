@@ -23,7 +23,7 @@ export function FloatingCard({
       style={{ animationDelay: `${delay}ms` }}
     >
       <div
-        className="animate-float rounded-card border border-divider bg-surface/90 px-3.5 py-3 shadow-xl shadow-black/40 backdrop-blur"
+        className="animate-float rounded-card border border-white/60 bg-white/70 px-3.5 py-3 shadow-[0_20px_40px_-16px_rgba(20,15,50,0.28)] backdrop-blur-xl"
         style={{ animationDelay: `${delay}ms` }}
       >
         {children}
