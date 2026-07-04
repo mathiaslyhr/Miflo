@@ -31,9 +31,6 @@ export default function Home() {
         {/* Hero — pink zone */}
         <section className="relative">
           <div className="relative mx-auto flex min-h-[calc(100svh-4rem)] w-full max-w-5xl flex-col items-center justify-center px-6 py-12 text-center">
-            <div className="animate-rise">
-              <Eyebrow>Multiplayer football party game · iOS</Eyebrow>
-            </div>
             <h1
               className="mx-auto mt-5 max-w-3xl animate-rise text-balance font-medium leading-[1.02] tracking-tight text-[#0d0d16] [animation-delay:60ms]"
               style={{ fontSize: "clamp(2.75rem,7vw,5rem)" }}
