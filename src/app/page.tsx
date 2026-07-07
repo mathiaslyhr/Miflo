@@ -62,11 +62,11 @@ export default function Home() {
               className="mx-auto mt-5 max-w-3xl animate-rise text-balance font-medium leading-[1.02] tracking-tight text-[#0d0d16] [animation-delay:60ms]"
               style={{ fontSize: "clamp(2.75rem,7vw,5rem)" }}
             >
-              The football game for your group chat.
+              The football game app for your group chat.
             </h1>
             <p className="mx-auto mt-5 max-w-xl animate-rise text-base leading-relaxed text-[#0d0d16]/55 [animation-delay:120ms] sm:text-lg">
-              Start a party, share the code, and see who really knows their
-              football when it counts.
+              Start a party, share the code, and see who really got
+              ballknowledge.
             </p>
 
             {/* iPhone showcase + floating app components */}
@@ -282,7 +282,7 @@ function Showcase() {
               <span className="font-mono">1,455</span>
             </div>
             <div className="flex items-center justify-between text-[#0d0d16]/55">
-              <span>4. Thomas</span>
+              <span>4. Max</span>
               <span className="font-mono">1,290</span>
             </div>
           </div>
@@ -292,9 +292,9 @@ function Showcase() {
         <FloatingCard className="-left-56 bottom-6 hidden lg:block" delay={860}>
           <div className="flex items-center gap-2.5">
             <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#0d0d16]/10 text-xs font-medium text-[#0d0d16]">
-              MX
+              TH
             </span>
-            <p className="text-xs font-medium text-[#0d0d16]">Max joined the party</p>
+            <p className="text-xs font-medium text-[#0d0d16]">Thomas joined the party</p>
           </div>
         </FloatingCard>
 
