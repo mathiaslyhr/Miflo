@@ -102,7 +102,7 @@ export default function PrivacyPage() {
               You don&apos;t create an account to use Miflo. When you open the
               app it signs in anonymously and stores a random device identifier
               on your phone so it can keep your nickname and reconnect you to a
-              game room. We never ask for your name, email, phone number, or
+              party. We never ask for your name, email, phone number, or
               other personal details.
             </p>
           </Section>
@@ -114,15 +114,15 @@ export default function PrivacyPage() {
             </p>
             <ul className="list-disc space-y-1 pl-5">
               <li>
-                The game rooms you create or join (a room code, the anonymous
-                player ids in the room, and scores).
+                The parties you create or join (a party code, the anonymous
+                player ids in the party, and scores).
               </li>
               <li>
                 Game results used for your in-app stats (games played, wins,
                 best score), tied to your anonymous device identifier.
               </li>
               <li>
-                The nickname you choose, so other players in your room can see
+                The nickname you choose, so other players in your party can see
                 who&apos;s who.
               </li>
               <li>
@@ -168,7 +168,7 @@ export default function PrivacyPage() {
             <ul className="list-disc space-y-1 pl-5">
               <li>
                 <span className="text-ink">Supabase</span> — database and
-                anonymous authentication for game rooms, scores, and feedback.
+                anonymous authentication for parties, scores, and feedback.
               </li>
               <li>
                 <span className="text-ink">Vercel</span> — hosting for this
@@ -183,7 +183,7 @@ export default function PrivacyPage() {
 
           <Section id="retention" title="Data retention and deletion">
             <p>
-              Game rooms are short-lived and cleared over time. Because Miflo
+              Parties are short-lived and cleared over time. Because Miflo
               has no login, your data is tied to an anonymous device identifier
               rather than to you personally. If you&apos;d like your stored game
               results or feedback removed, contact us and we&apos;ll delete them.
