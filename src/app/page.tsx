@@ -20,30 +20,22 @@ const STEPS = [
   },
 ];
 
-const FAQS = [
+const MOMENTS = [
   {
-    q: "Is Miflo free?",
-    a: "Yes — Miflo is free while it's in public beta. Get on the list and start a party.",
+    label: "Halftime",
+    body: "Fifteen minutes, one quick game before the second half.",
   },
   {
-    q: "What do I need to play?",
-    a: "An iPhone and a few mates. One person starts a party and shares the four-letter code; everyone else joins from their own phone.",
+    label: "Pre-match pub",
+    body: "Warm up the table before kickoff.",
   },
   {
-    q: "Do I need to sign up?",
-    a: "No account, no sign-up. Open the app, pick a nickname, and you're in.",
+    label: "The group chat",
+    body: "Settle the argument that never dies.",
   },
   {
-    q: "How many people can play?",
-    a: "It's built for a group. Start with two and add as many mates as you can round up — perfect for a full group chat.",
-  },
-  {
-    q: "Which games are there?",
-    a: "Three right now: Tic Tac Toe, Tenball, and Heatmap. More are on the way.",
-  },
-  {
-    q: "Is it on Android?",
-    a: "Miflo is iOS-only for now. Want it on Android? Get on the list and we'll let you know.",
+    label: "Long away trip",
+    body: "Kill the journey with a running leaderboard.",
   },
 ];
 
@@ -138,41 +130,34 @@ export default function Home() {
           </div>
         </section>
 
-        {/* FAQ — lilac zone */}
-        <section id="faq" className="relative scroll-mt-20">
+        {/* Made for the moment — lilac zone */}
+        <section id="moments" className="relative scroll-mt-20">
           <div className="relative mx-auto w-full max-w-5xl px-6 py-24">
-            <Eyebrow>FAQ</Eyebrow>
+            <Eyebrow>Made for the moment</Eyebrow>
             <h2
-              className="mt-4 font-medium leading-[1.05] tracking-tight text-[#0d0d16]"
+              className="mt-4 max-w-xl font-medium leading-[1.05] tracking-tight text-[#0d0d16]"
               style={{ fontSize: "clamp(2rem,5vw,3.25rem)" }}
             >
-              Good to know.
+              Whenever the football&apos;s on.
             </h2>
-            <div className="mt-12 flex flex-col divide-y divide-[#0d0d16]/10 border-t border-[#0d0d16]/10">
-              {FAQS.map((faq) => (
-                <details key={faq.q} className="group py-5">
-                  <summary className="flex cursor-pointer list-none items-center justify-between gap-6 text-lg font-medium text-[#0d0d16] [&::-webkit-details-marker]:hidden">
-                    {faq.q}
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      aria-hidden
-                      className="shrink-0 text-[#0d0d16]/40 transition-transform duration-300 ease-[cubic-bezier(0.34,1.25,0.64,1)] group-open:rotate-45"
-                    >
-                      <path
-                        d="M12 5v14M5 12h14"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                      />
-                    </svg>
-                  </summary>
-                  <p className="mt-3 max-w-2xl leading-relaxed text-[#0d0d16]/55">
-                    {faq.a}
+            <p className="mt-3 max-w-md text-[#0d0d16]/55">
+              Miflo is for the in-between moments — the ones you already spend
+              arguing about football.
+            </p>
+
+            <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-4">
+              {MOMENTS.map((moment) => (
+                <div
+                  key={moment.label}
+                  className="rounded-2xl border border-white/60 bg-white/40 p-5 shadow-[0_8px_24px_-16px_rgba(20,15,50,0.35)] backdrop-blur-md"
+                >
+                  <h3 className="text-base font-medium text-[#0d0d16]">
+                    {moment.label}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-[#0d0d16]/55">
+                    {moment.body}
                   </p>
-                </details>
+                </div>
               ))}
             </div>
           </div>

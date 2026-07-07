@@ -19,6 +19,12 @@ export function SiteFooter() {
         </div>
         <nav className="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-[#0d0d16]/55">
           <Link
+            href="/faq"
+            className="transition-colors hover:text-[#0d0d16]"
+          >
+            FAQ
+          </Link>
+          <Link
             href="/feedback"
             className="transition-colors hover:text-[#0d0d16]"
           >

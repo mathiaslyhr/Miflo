@@ -5,7 +5,7 @@ import { DownloadButton } from "./DownloadButton";
 const NAV = [
   { label: "Games", href: "/#games" },
   { label: "How it works", href: "/#how" },
-  { label: "FAQ", href: "/#faq" },
+  { label: "FAQ", href: "/faq" },
   { label: "Feedback", href: "/feedback" },
 ];
 
