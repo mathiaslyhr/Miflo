@@ -20,7 +20,7 @@ export default function NotifyPage() {
             className="mt-4 font-medium leading-[1.05] tracking-tight text-[#0d0d16]"
             style={{ fontSize: "clamp(2.25rem,6vw,3.5rem)" }}
           >
-            Get the beta invite
+            Get the beta invite.
           </h1>
           <p className="mt-4 text-lg leading-relaxed text-[#0d0d16]/55">
             Miflo is in public beta and invites are rolling out. Leave your email

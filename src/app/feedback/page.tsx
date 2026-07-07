@@ -20,7 +20,7 @@ export default function FeedbackPage() {
             className="mt-4 font-medium leading-[1.05] tracking-tight text-[#0d0d16]"
             style={{ fontSize: "clamp(2.25rem,6vw,3.5rem)" }}
           >
-            Feedback, questions, ideas
+            Feedback, questions, ideas.
           </h1>
           <p className="mt-4 text-lg leading-relaxed text-[#0d0d16]/55">
             Tell us what to fix or what to build next. Everything you send goes

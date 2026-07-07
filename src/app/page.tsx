@@ -118,7 +118,7 @@ export default function Home() {
               className="mt-4 font-medium leading-[1.05] tracking-tight text-[#0d0d16]"
               style={{ fontSize: "clamp(2rem,5vw,3.25rem)" }}
             >
-              Up and running in seconds
+              Up and running in seconds.
             </h2>
             <ol className="mt-12 grid gap-8 sm:grid-cols-3">
               {STEPS.map((step, i) => (
@@ -146,7 +146,7 @@ export default function Home() {
               className="mt-4 font-medium leading-[1.05] tracking-tight text-[#0d0d16]"
               style={{ fontSize: "clamp(2rem,5vw,3.25rem)" }}
             >
-              Good to know
+              Good to know.
             </h2>
             <div className="mt-12 flex flex-col divide-y divide-[#0d0d16]/10 border-t border-[#0d0d16]/10">
               {FAQS.map((faq) => (
