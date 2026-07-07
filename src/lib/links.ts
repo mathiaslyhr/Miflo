@@ -16,18 +16,18 @@ export const CONTACT_EMAIL = "hello@miflo.dk";
 
 export const GAMES = [
   {
-    name: "Football Quiz",
+    name: "Tic Tac Toe",
     blurb:
-      "Rapid-fire trivia across leagues and eras. Answer fast for the speed bonus, fall behind and you'll feel it.",
+      "Football trivia meets tic-tac-toe. Claim a square by naming a player who fits the row and the column — first to three in a row takes it.",
   },
   {
-    name: "Odd One Out",
+    name: "Tenball",
     blurb:
-      "Four players, one breaks the pattern. Spot the impostor before your mates do.",
+      "One football prompt, ten right answers. Race your mates to name the top ten before the clock runs out.",
   },
   {
-    name: "Missing XI",
+    name: "Heatmap",
     blurb:
-      "An iconic line-up with one name blanked out. Type the missing player from memory.",
+      "Build heat across the grid square by square and claim more of the board than everyone else.",
   },
 ] as const;

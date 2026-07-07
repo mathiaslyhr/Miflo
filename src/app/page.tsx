@@ -12,7 +12,7 @@ const STEPS = [
   },
   {
     title: "Share the code",
-    body: "Host a room and send mates the four-letter code. They join in seconds.",
+    body: "Start a party and drop the four-letter code in the group chat. They join in seconds.",
   },
   {
     title: "Play together",
@@ -35,11 +35,11 @@ export default function Home() {
               className="mx-auto mt-5 max-w-3xl animate-rise text-balance font-medium leading-[1.02] tracking-tight text-[#0d0d16] [animation-delay:60ms]"
               style={{ fontSize: "clamp(2.75rem,7vw,5rem)" }}
             >
-              Football games you play with your mates.
+              The football game for your group chat.
             </h1>
             <p className="mx-auto mt-5 max-w-xl animate-rise text-base leading-relaxed text-[#0d0d16]/55 [animation-delay:120ms] sm:text-lg">
-              Join a room with a code and settle who really knows their football.
-              Three quick games, live scores, zero setup.
+              Start a party, share the code, and see who really knows their
+              football when it counts.
             </p>
 
             {/* iPhone showcase + floating app components */}
@@ -55,10 +55,10 @@ export default function Home() {
               className="mt-4 max-w-xl font-medium leading-[1.05] tracking-tight text-[#0d0d16]"
               style={{ fontSize: "clamp(2rem,5vw,3.25rem)" }}
             >
-              Three games. One room.
+              Three games. One party.
             </h2>
             <p className="mt-3 max-w-md text-[#0d0d16]/55">
-              Same lobby, same friends. Pick a game and pass the phone or play
+              Same party, same mates. Pick a game and pass the phone or play
               from your own.
             </p>
 
@@ -124,7 +124,7 @@ export default function Home() {
               Miflo is best with a few mates and something to prove.
             </p>
             <div className="mt-8 flex justify-center gap-3">
-              <DownloadButton />
+              <DownloadButton className="text-sm" />
               <OutlineButton href="/#games" className="!px-6 !py-3.5">
                 See the games
               </OutlineButton>
@@ -152,8 +152,8 @@ function Showcase() {
               ABCD
             </span>
             <div>
-              <p className="text-xs font-medium text-[#0d0d16]">Room is live</p>
-              <p className="text-[11px] text-[#0d0d16]/50">4 players joined</p>
+              <p className="text-xs font-medium text-[#0d0d16]">Party is live</p>
+              <p className="text-[11px] text-[#0d0d16]/50">4 mates joined</p>
             </div>
           </div>
         </FloatingCard>
@@ -187,13 +187,13 @@ function Showcase() {
           <p className="text-[11px] font-medium text-[#0d0d16]/55">Pick a game</p>
           <div className="mt-2 flex flex-wrap gap-1.5 text-xs">
             <span className="rounded-full bg-[#0d0d16] px-2.5 py-1 font-medium text-white">
-              Quiz
+              Tic Tac Toe
             </span>
             <span className="rounded-full bg-[#f1eefb] px-2.5 py-1 text-[#0d0d16]/55">
-              Odd One Out
+              Tenball
             </span>
             <span className="rounded-full bg-[#f1eefb] px-2.5 py-1 text-[#0d0d16]/55">
-              Missing XI
+              Heatmap
             </span>
           </div>
         </FloatingCard>
@@ -207,12 +207,16 @@ function Showcase() {
               <span className="font-mono">1,840</span>
             </div>
             <div className="flex items-center justify-between text-[#0d0d16]/55">
-              <span>2. Sam</span>
+              <span>2. Sebastian</span>
               <span className="font-mono">1,610</span>
             </div>
             <div className="flex items-center justify-between text-[#0d0d16]/55">
-              <span>3. Priya</span>
+              <span>3. Oscar</span>
               <span className="font-mono">1,455</span>
+            </div>
+            <div className="flex items-center justify-between text-[#0d0d16]/55">
+              <span>4. Thomas</span>
+              <span className="font-mono">1,290</span>
             </div>
           </div>
         </FloatingCard>
@@ -221,9 +225,9 @@ function Showcase() {
         <FloatingCard className="-left-56 bottom-6 hidden lg:block" delay={860}>
           <div className="flex items-center gap-2.5">
             <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#0d0d16]/10 text-xs font-medium text-[#0d0d16]">
-              JL
+              MX
             </span>
-            <p className="text-xs font-medium text-[#0d0d16]">Jess joined the room</p>
+            <p className="text-xs font-medium text-[#0d0d16]">Max joined the party</p>
           </div>
         </FloatingCard>
 

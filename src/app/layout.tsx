@@ -14,11 +14,11 @@ const satoshi = localFont({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://miflo.dk"),
-  title: "Miflo — football games to play with your mates",
+  title: "Miflo — the football game for your group chat",
   description:
-    "Miflo is a fast multiplayer football party game for iOS. Join a room with a code and play Football Quiz, Odd One Out, and Missing XI together. No sign-up.",
+    "Miflo is a fast multiplayer football party game for iOS. Start a party, share a code, and play Tic Tac Toe, Tenball, and Heatmap together. No sign-up.",
   openGraph: {
-    title: "Miflo — football games to play with your mates",
+    title: "Miflo — the football game for your group chat",
     description:
       "Fast multiplayer football games for iOS. Join with a code and play together.",
     url: "https://miflo.dk",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Miflo — football games to play with your mates",
+    title: "Miflo — the football game for your group chat",
     description:
       "Fast multiplayer football games for iOS. Join with a code and play together.",
   },

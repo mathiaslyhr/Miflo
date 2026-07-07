@@ -14,7 +14,7 @@ export function SiteFooter() {
             Miflo
           </p>
           <p className="mt-1 text-sm text-[#0d0d16]/55">
-            Football games to play with your mates.
+            The football game for your group chat.
           </p>
         </div>
         <nav className="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-[#0d0d16]/55">

@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 
 const BASE = "https://miflo.dk";
 
-// Public, indexable routes only — the unlisted /components gallery is excluded.
+// Public, indexable routes only.
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
   return [

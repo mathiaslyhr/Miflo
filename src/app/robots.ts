@@ -7,8 +7,6 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
-      // /components is an unlisted design reference — keep it out of search.
-      disallow: "/components",
     },
     sitemap: `${BASE}/sitemap.xml`,
   };

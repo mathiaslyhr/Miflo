@@ -3,7 +3,7 @@ import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 
 // Branded social share card (used for Open Graph + Twitter).
-export const alt = "Miflo — football games to play with your mates";
+export const alt = "Miflo — the football game for your group chat";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -51,10 +51,10 @@ export default async function OpengraphImage() {
               maxWidth: 900,
             }}
           >
-            Football games you play with your mates.
+            The football game for your group chat.
           </div>
           <div style={{ display: "flex", gap: 16, marginTop: 44 }}>
-            {["Football Quiz", "Odd One Out", "Missing XI"].map((g, i) => (
+            {["Tic Tac Toe", "Tenball", "Heatmap"].map((g, i) => (
               <div
                 key={g}
                 style={{
