@@ -235,10 +235,7 @@ function Showcase() {
         </FloatingCard>
 
         {/* game picker — the app's GameTile: purple icon, title + tagline, chevron */}
-        <FloatingCard
-          className="-left-80 top-1/2 hidden -translate-y-1/2 lg:block"
-          delay={660}
-        >
+        <FloatingCard className="-left-80 bottom-36 hidden lg:block" delay={660}>
           <p className="text-[11px] font-medium text-ink/55">Pick a game</p>
           <div className="mt-2 flex items-center gap-2.5 rounded-card border border-white/65 bg-white/40 py-2 pl-2.5 pr-2">
             <svg
@@ -280,7 +277,10 @@ function Showcase() {
         </FloatingCard>
 
         {/* leaderboard — "you" reads in brand purple, like the app */}
-        <FloatingCard className="-right-80 bottom-16 hidden lg:block" delay={760}>
+        <FloatingCard
+          className="-right-80 top-1/2 hidden -translate-y-1/2 lg:block"
+          delay={760}
+        >
           <p className="text-[11px] font-medium text-ink/55">Leaderboard</p>
           <div className="mt-2 flex w-40 flex-col gap-1.5 text-sm">
             <div className="flex items-center justify-between text-accent">
@@ -303,7 +303,7 @@ function Showcase() {
         </FloatingCard>
 
         {/* player-joined toast — neutral tone: lilac-tinted chip, info glyph */}
-        <FloatingCard pill className="-left-56 bottom-6 hidden lg:block" delay={860}>
+        <FloatingCard pill className="-right-60 bottom-8 hidden lg:block" delay={860}>
           <div className="flex items-center gap-2.5">
             <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#e6e6fe] text-accent">
               <svg
