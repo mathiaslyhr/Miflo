@@ -320,10 +320,7 @@ function Showcase() {
         </FloatingCard>
 
         {/* leaderboard — "you" reads in brand purple, like the app */}
-        <FloatingCard
-          className="-right-80 top-1/2 hidden -translate-y-1/2 lg:block"
-          delay={760}
-        >
+        <FloatingCard className="-right-80 bottom-8 hidden lg:block" delay={960}>
           <p className="text-[11px] font-medium text-ink/55">Leaderboard</p>
           <div className="mt-2 flex w-40 flex-col gap-1.5 text-sm">
             <div className="flex items-center justify-between text-accent">
@@ -346,7 +343,11 @@ function Showcase() {
         </FloatingCard>
 
         {/* player-joined toast — neutral tone: lilac-tinted chip, info glyph */}
-        <FloatingCard pill className="-right-60 bottom-8 hidden lg:block" delay={960}>
+        <FloatingCard
+          pill
+          className="-right-72 top-1/2 hidden -translate-y-1/2 lg:block"
+          delay={760}
+        >
           <div className="flex items-center gap-2.5">
             <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#e6e6fe] text-accent">
               <svg
