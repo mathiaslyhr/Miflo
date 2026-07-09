@@ -234,6 +234,15 @@ export default function PrivacyPage() {
             </p>
           </Section>
 
+          <Section id="disclaimer" title="Football disclaimer">
+            <p>
+              Miflo is not affiliated with, sponsored by, or endorsed by any
+              football league, club, player or governing body. Player names and
+              career statistics are factual information used for trivia
+              purposes. All artwork in Miflo is original illustration.
+            </p>
+          </Section>
+
           <Section id="contact" title="Contact">
             <p>
               Miflo is operated by {CONTROLLER} in Denmark, the controller of
