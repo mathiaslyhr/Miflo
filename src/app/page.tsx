@@ -4,6 +4,8 @@ import { DownloadButton } from "@/components/DownloadButton";
 import { PhoneFrame } from "@/components/showcase/PhoneFrame";
 import { FloatingCard } from "@/components/showcase/FloatingCard";
 import hattrickShot from "@/components/showcase/assets/hattrick.png";
+import flagEs from "@/components/showcase/assets/flag-es.png";
+import crestBarcelona from "@/components/showcase/assets/crest-barcelona.png";
 import { Eyebrow, OutlineButton } from "@/components/glass";
 import { GAMES } from "@/lib/links";
 
@@ -194,8 +196,9 @@ export default function Home() {
  * The hero showcase: a phone running Hattrick (a real app screenshot), ringed
  * by "isolated" app components that mirror the app's glass language — glass
  * pills with an accent rim for selected/you, toast pills with tinted icon
- * chips (success + neutral tones), a GameTile row. The floating cards only
- * appear on lg+ so small screens stay clean (just the phone) without overflow.
+ * chips (success + neutral tones), a GameTile row, Scout's compare row (real
+ * flag/crest assets from the app). Three cards per side; they only appear on
+ * lg+ so small screens stay clean (just the phone) without overflow.
  */
 function Showcase() {
   return (
@@ -214,8 +217,48 @@ function Showcase() {
           </div>
         </FloatingCard>
 
+        {/* Scout guess — the daily game's compare row: columns, name, tiles */}
+        <FloatingCard className="-right-80 top-6 hidden lg:block" delay={560}>
+          <p className="text-[11px] font-medium text-ink/55">
+            Scout · guess 2 of 6
+          </p>
+          <div className="mt-2 grid grid-cols-5 gap-1 border-b border-ink/10 pb-1.5 text-center text-[10px] text-ink/45">
+            <span>Nation</span>
+            <span>Position</span>
+            <span>Club</span>
+            <span>League</span>
+            <span>Shirt</span>
+          </div>
+          <p className="mt-1.5 text-xs font-medium text-ink">Lamine Yamal</p>
+          <div className="mt-1.5 grid grid-cols-5 gap-1 text-[10px] font-medium text-white">
+            <span className="flex h-8 items-center justify-center rounded-lg bg-[#9aa0a8]">
+              <Image src={flagEs} alt="Spain" className="h-auto w-5 rounded-[2px]" />
+            </span>
+            <span className="flex h-8 items-center justify-center rounded-lg bg-[#4fb477]">
+              FW
+            </span>
+            <span className="flex h-8 items-center justify-center rounded-lg bg-[#9aa0a8]">
+              <Image
+                src={crestBarcelona}
+                alt="FC Barcelona"
+                className="h-5 w-5 object-contain"
+              />
+            </span>
+            <span className="flex h-8 items-center justify-center rounded-lg bg-[#9aa0a8]">
+              La Liga
+            </span>
+            <span className="flex h-8 items-center justify-center rounded-lg bg-[#9aa0a8]">
+              10&uarr;
+            </span>
+          </div>
+        </FloatingCard>
+
         {/* square-claimed toast — the app's pill toast with a tinted icon chip */}
-        <FloatingCard pill className="-right-72 top-12 hidden lg:block" delay={560}>
+        <FloatingCard
+          pill
+          className="-left-72 top-[40%] hidden -translate-y-1/2 lg:block"
+          delay={660}
+        >
           <div className="flex items-center gap-2.5">
             <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#def5e8] text-success">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden>
@@ -235,7 +278,7 @@ function Showcase() {
         </FloatingCard>
 
         {/* game picker — the app's GameTile: purple icon, title + tagline, chevron */}
-        <FloatingCard className="-left-80 bottom-36 hidden lg:block" delay={660}>
+        <FloatingCard className="-left-80 bottom-36 hidden lg:block" delay={860}>
           <p className="text-[11px] font-medium text-ink/55">Pick a game</p>
           <div className="mt-2 flex items-center gap-2.5 rounded-card border border-white/65 bg-white/40 py-2 pl-2.5 pr-2">
             <svg
@@ -303,7 +346,7 @@ function Showcase() {
         </FloatingCard>
 
         {/* player-joined toast — neutral tone: lilac-tinted chip, info glyph */}
-        <FloatingCard pill className="-right-60 bottom-8 hidden lg:block" delay={860}>
+        <FloatingCard pill className="-right-60 bottom-8 hidden lg:block" delay={960}>
           <div className="flex items-center gap-2.5">
             <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#e6e6fe] text-accent">
               <svg
