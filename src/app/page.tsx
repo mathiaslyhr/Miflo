@@ -193,9 +193,9 @@ export default function Home() {
 /**
  * The hero showcase: a phone running Hattrick (a real app screenshot), ringed
  * by "isolated" app components that mirror the app's glass language — glass
- * pills with an accent rim for selected/you, toast pill with a tinted icon
- * chip, solid-accent avatar. The floating cards only appear on lg+ so small
- * screens stay clean (just the phone) without overflow.
+ * pills with an accent rim for selected/you, toast pills with tinted icon
+ * chips (success + neutral tones), a GameTile row. The floating cards only
+ * appear on lg+ so small screens stay clean (just the phone) without overflow.
  */
 function Showcase() {
   return (
@@ -209,7 +209,7 @@ function Showcase() {
             </span>
             <div>
               <p className="text-xs font-medium text-ink">Party is live</p>
-              <p className="text-[11px] text-ink/50">4 mates joined</p>
+              <p className="text-[11px] text-ink/50">4 in the party</p>
             </div>
           </div>
         </FloatingCard>
@@ -234,22 +234,48 @@ function Showcase() {
           </div>
         </FloatingCard>
 
-        {/* game switcher — glass tags, accent rim marks the selected game */}
+        {/* game picker — the app's GameTile: purple icon, title + tagline, chevron */}
         <FloatingCard
           className="-left-80 top-1/2 hidden -translate-y-1/2 lg:block"
           delay={660}
         >
           <p className="text-[11px] font-medium text-ink/55">Pick a game</p>
-          <div className="mt-2 flex flex-wrap gap-1.5 text-xs">
-            <span className="rounded-full border border-accent bg-white/55 px-2.5 py-1 font-medium text-ink">
-              Hattrick
-            </span>
-            <span className="rounded-full border border-white/65 bg-surface-2 px-2.5 py-1 text-ink/55">
-              Red Card
-            </span>
-            <span className="rounded-full border border-white/65 bg-surface-2 px-2.5 py-1 text-ink/55">
-              Scout
-            </span>
+          <div className="mt-2 flex items-center gap-2.5 rounded-card border border-white/65 bg-white/40 py-2 pl-2.5 pr-2">
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="shrink-0 text-accent"
+              aria-hidden
+            >
+              <rect x="3" y="3" width="18" height="18" rx="2" />
+              <path d="M3 9h18M3 15h18M9 3v18M15 3v18" />
+            </svg>
+            <div>
+              <p className="text-xs font-medium text-ink">Hattrick</p>
+              <p className="text-[11px] text-ink/55">
+                Football trivia &times; three in a row
+              </p>
+            </div>
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="shrink-0 text-ink/45"
+              aria-hidden
+            >
+              <path d="m9 18 6-6-6-6" />
+            </svg>
           </div>
         </FloatingCard>
 
@@ -276,13 +302,28 @@ function Showcase() {
           </div>
         </FloatingCard>
 
-        {/* player joined — solid-accent initials avatar (the app's Avatar atom) */}
-        <FloatingCard className="-left-56 bottom-6 hidden lg:block" delay={860}>
+        {/* player-joined toast — neutral tone: lilac-tinted chip, info glyph */}
+        <FloatingCard pill className="-left-56 bottom-6 hidden lg:block" delay={860}>
           <div className="flex items-center gap-2.5">
-            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-accent text-xs font-medium text-white">
-              TH
+            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#e6e6fe] text-accent">
+              <svg
+                width="13"
+                height="13"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden
+              >
+                <circle cx="12" cy="12" r="10" />
+                <path d="M12 16v-4M12 8h.01" />
+              </svg>
             </span>
-            <p className="text-xs font-medium text-ink">Thomas joined the party</p>
+            <p className="pr-1 text-xs font-medium text-ink">
+              Thomas joined the party
+            </p>
           </div>
         </FloatingCard>
 
