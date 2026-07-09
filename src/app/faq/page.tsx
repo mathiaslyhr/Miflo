@@ -27,7 +27,7 @@ const FAQS = [
   },
   {
     q: "Which games are there?",
-    a: "Three right now: Tic Tac Toe, Tenball, and Heatmap. More are on the way.",
+    a: "Five right now: Hattrick, Red Card, Scout, Tenball, and Heatmap. More are on the way.",
   },
   {
     q: "Is it on Android?",

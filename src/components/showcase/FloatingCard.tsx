@@ -10,12 +10,15 @@ export function FloatingCard({
   children,
   className = "",
   delay = 0,
+  pill = false,
 }: {
   children: ReactNode;
   /** Tailwind positioning utilities, e.g. "left-0 top-10". */
   className?: string;
   /** Stagger, in ms, for entrance + drift. */
   delay?: number;
+  /** Fully-round corners — the app's toast silhouette (radii.pill). */
+  pill?: boolean;
 }) {
   return (
     <div
@@ -23,7 +26,9 @@ export function FloatingCard({
       style={{ animationDelay: `${delay}ms` }}
     >
       <div
-        className="animate-float rounded-card border border-white/60 bg-white/70 px-3.5 py-3 shadow-[0_20px_40px_-16px_rgba(20,15,50,0.28)] backdrop-blur-xl"
+        className={`animate-float border border-white/65 bg-white/55 px-3.5 py-3 shadow-[0_20px_40px_-16px_rgba(20,15,50,0.28)] backdrop-blur-xl ${
+          pill ? "rounded-full" : "rounded-card"
+        }`}
         style={{ animationDelay: `${delay}ms` }}
       >
         {children}

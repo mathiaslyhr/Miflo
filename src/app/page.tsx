@@ -1,7 +1,9 @@
+import Image from "next/image";
 import { SiteHeader } from "@/components/SiteHeader";
 import { DownloadButton } from "@/components/DownloadButton";
-import { PhoneFrame, QuizScreen } from "@/components/showcase/PhoneFrame";
+import { PhoneFrame } from "@/components/showcase/PhoneFrame";
 import { FloatingCard } from "@/components/showcase/FloatingCard";
+import hattrickShot from "@/components/showcase/assets/hattrick.png";
 import { Eyebrow, OutlineButton } from "@/components/glass";
 import { GAMES } from "@/lib/links";
 
@@ -74,7 +76,7 @@ export default function Home() {
               className="mt-4 max-w-xl font-medium leading-[1.05] tracking-tight text-[#0d0d16]"
               style={{ fontSize: "clamp(2rem,5vw,3.25rem)" }}
             >
-              Three games. One party.
+              Five games. One party.
             </h2>
             <p className="mt-3 max-w-md text-[#0d0d16]/55">
               Same party, same mates. Pick a game and pass the phone or play
@@ -189,32 +191,34 @@ export default function Home() {
 }
 
 /**
- * The hero showcase: a phone running the quiz, ringed by "isolated" app
- * components. The floating cards only appear on lg+ so small screens stay
- * clean (just the phone) without overflow.
+ * The hero showcase: a phone running Hattrick (a real app screenshot), ringed
+ * by "isolated" app components that mirror the app's glass language — glass
+ * pills with an accent rim for selected/you, toast pill with a tinted icon
+ * chip, solid-accent avatar. The floating cards only appear on lg+ so small
+ * screens stay clean (just the phone) without overflow.
  */
 function Showcase() {
   return (
     <div className="relative mx-auto mt-12 w-[260px]">
       <div className="relative animate-rise [animation-delay:240ms]">
-        {/* room code */}
+        {/* room code — lobby glass tag, accent rim like the "you" state */}
         <FloatingCard className="-left-72 top-8 hidden lg:block" delay={460}>
           <div className="flex items-center gap-3">
-            <span className="rounded-lg bg-[#f1eefb] px-2.5 py-1 font-mono text-sm tracking-widest text-[#0d0d16]">
+            <span className="rounded-full border border-accent bg-white/55 px-2.5 py-1 font-mono text-sm tracking-widest text-ink">
               ABCD
             </span>
             <div>
-              <p className="text-xs font-medium text-[#0d0d16]">Party is live</p>
-              <p className="text-[11px] text-[#0d0d16]/50">4 mates joined</p>
+              <p className="text-xs font-medium text-ink">Party is live</p>
+              <p className="text-[11px] text-ink/50">4 mates joined</p>
             </div>
           </div>
         </FloatingCard>
 
-        {/* correct-answer toast */}
-        <FloatingCard className="-right-72 top-12 hidden lg:block" delay={560}>
+        {/* square-claimed toast — the app's pill toast with a tinted icon chip */}
+        <FloatingCard pill className="-right-72 top-12 hidden lg:block" delay={560}>
           <div className="flex items-center gap-2.5">
-            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#0d0d16] text-white">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden>
+            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#def5e8] text-success">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden>
                 <path
                   d="M5 12.5l4.5 4.5L19 7"
                   stroke="currentColor"
@@ -224,67 +228,73 @@ function Showcase() {
                 />
               </svg>
             </span>
-            <div>
-              <p className="text-xs font-medium text-[#0d0d16]">+250 speed bonus</p>
-              <p className="text-[11px] text-[#0d0d16]/50">Fastest correct answer</p>
-            </div>
+            <p className="pr-1 text-xs font-medium text-ink">
+              Lionel Messi — square claimed
+            </p>
           </div>
         </FloatingCard>
 
-        {/* game switcher */}
+        {/* game switcher — glass tags, accent rim marks the selected game */}
         <FloatingCard
           className="-left-80 top-1/2 hidden -translate-y-1/2 lg:block"
           delay={660}
         >
-          <p className="text-[11px] font-medium text-[#0d0d16]/55">Pick a game</p>
+          <p className="text-[11px] font-medium text-ink/55">Pick a game</p>
           <div className="mt-2 flex flex-wrap gap-1.5 text-xs">
-            <span className="rounded-full bg-[#0d0d16] px-2.5 py-1 font-medium text-white">
-              Tic Tac Toe
+            <span className="rounded-full border border-accent bg-white/55 px-2.5 py-1 font-medium text-ink">
+              Hattrick
             </span>
-            <span className="rounded-full bg-[#f1eefb] px-2.5 py-1 text-[#0d0d16]/55">
-              Tenball
+            <span className="rounded-full border border-white/65 bg-surface-2 px-2.5 py-1 text-ink/55">
+              Red Card
             </span>
-            <span className="rounded-full bg-[#f1eefb] px-2.5 py-1 text-[#0d0d16]/55">
-              Heatmap
+            <span className="rounded-full border border-white/65 bg-surface-2 px-2.5 py-1 text-ink/55">
+              Scout
             </span>
           </div>
         </FloatingCard>
 
-        {/* leaderboard */}
+        {/* leaderboard — "you" reads in brand purple, like the app */}
         <FloatingCard className="-right-80 bottom-16 hidden lg:block" delay={760}>
-          <p className="text-[11px] font-medium text-[#0d0d16]/55">Leaderboard</p>
+          <p className="text-[11px] font-medium text-ink/55">Leaderboard</p>
           <div className="mt-2 flex w-40 flex-col gap-1.5 text-sm">
-            <div className="flex items-center justify-between text-[#2a9d5a]">
+            <div className="flex items-center justify-between text-accent">
               <span className="font-medium">1. You</span>
               <span className="font-mono">1,840</span>
             </div>
-            <div className="flex items-center justify-between text-[#0d0d16]/55">
+            <div className="flex items-center justify-between text-ink/55">
               <span>2. Sebastian</span>
               <span className="font-mono">1,610</span>
             </div>
-            <div className="flex items-center justify-between text-[#0d0d16]/55">
+            <div className="flex items-center justify-between text-ink/55">
               <span>3. Oscar</span>
               <span className="font-mono">1,455</span>
             </div>
-            <div className="flex items-center justify-between text-[#0d0d16]/55">
+            <div className="flex items-center justify-between text-ink/55">
               <span>4. Max</span>
               <span className="font-mono">1,290</span>
             </div>
           </div>
         </FloatingCard>
 
-        {/* player joined */}
+        {/* player joined — solid-accent initials avatar (the app's Avatar atom) */}
         <FloatingCard className="-left-56 bottom-6 hidden lg:block" delay={860}>
           <div className="flex items-center gap-2.5">
-            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#0d0d16]/10 text-xs font-medium text-[#0d0d16]">
+            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-accent text-xs font-medium text-white">
               TH
             </span>
-            <p className="text-xs font-medium text-[#0d0d16]">Thomas joined the party</p>
+            <p className="text-xs font-medium text-ink">Thomas joined the party</p>
           </div>
         </FloatingCard>
 
-        <PhoneFrame>
-          <QuizScreen />
+        <PhoneFrame chrome={false}>
+          <Image
+            src={hattrickShot}
+            alt="A Hattrick round in Miflo — a three-by-three grid of football categories with claimed squares and the timer running"
+            fill
+            priority
+            sizes="240px"
+            className="object-cover"
+          />
         </PhoneFrame>
       </div>
     </div>

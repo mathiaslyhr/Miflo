@@ -14,11 +14,22 @@ export const HAS_DOWNLOAD = DOWNLOAD_URL !== "";
 // change it) — the in-app/website feedback form is the main channel.
 export const CONTACT_EMAIL = "hello@miflo.dk";
 
+// Names + blurbs mirror the app's games catalog (MifloApp i18n `games.*`).
 export const GAMES = [
   {
-    name: "Tic Tac Toe",
+    name: "Hattrick",
     blurb:
       "Football trivia meets tic-tac-toe. Claim a square by naming a player who fits the row and the column — first to three in a row takes it.",
+  },
+  {
+    name: "Red Card",
+    blurb:
+      "One of you is faking it. Everyone else knows the footballer — question each other, vote on who to send off.",
+  },
+  {
+    name: "Scout",
+    blurb:
+      "Guess the daily footballer in six tries. Every guess lights up green, yellow or grey — a new player drops each day, the same for everyone.",
   },
   {
     name: "Tenball",

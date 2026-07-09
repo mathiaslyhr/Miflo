@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://miflo.dk"),
   title: "Miflo — the football game for your group chat",
   description:
-    "Miflo is a fast multiplayer football party game for iOS. Start a party, share a code, and play Tic Tac Toe, Tenball, and Heatmap together. No sign-up.",
+    "Miflo is a fast multiplayer football party game for iOS. Start a party, share a code, and play Hattrick, Red Card, Scout, and more together. No sign-up.",
   openGraph: {
     title: "Miflo — the football game for your group chat",
     description:

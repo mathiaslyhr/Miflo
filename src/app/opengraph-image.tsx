@@ -54,7 +54,7 @@ export default async function OpengraphImage() {
             The football game for your group chat.
           </div>
           <div style={{ display: "flex", gap: 16, marginTop: 44 }}>
-            {["Tic Tac Toe", "Tenball", "Heatmap"].map((g, i) => (
+            {["Hattrick", "Red Card", "Scout", "Tenball", "Heatmap"].map((g, i) => (
               <div
                 key={g}
                 style={{
