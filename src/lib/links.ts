@@ -32,13 +32,38 @@ export const GAMES = [
       "Guess the daily footballer in six tries. Every guess lights up green, yellow or grey — a new player drops each day, the same for everyone.",
   },
   {
-    name: "Tenball",
+    name: "Top Bins",
     blurb:
       "One football prompt, ten right answers. Race your mates to name the top ten before the clock runs out.",
   },
   {
-    name: "Heatmap",
+    name: "Possession",
     blurb:
-      "Build heat across the grid square by square and claim more of the board than everyone else.",
+      "Claim the pitch square by square and hold more of the board than everyone else when the whistle goes.",
+  },
+  {
+    name: "Matchday",
+    blurb:
+      "Everyone gets a card of football facts. Tick them off as the answers land — first full row wins.",
+  },
+  {
+    name: "Journeyman",
+    blurb:
+      "One career path, club by club. The earlier you name the player, the more it's worth.",
+  },
+  {
+    name: "Teamsheet",
+    blurb:
+      "A famous lineup with names missing. Fill in the teamsheet before your mates do.",
+  },
+  {
+    name: "Offside",
+    blurb:
+      "Four players, one doesn't belong. Spot who's offside and say why.",
+  },
+  {
+    name: "Cult Hero",
+    blurb:
+      "Everyone's thinking of the same easy answer — the most obscure right answer wins the round.",
   },
 ] as const;
