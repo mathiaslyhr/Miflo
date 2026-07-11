@@ -11,7 +11,7 @@ export function GET() {
       details: [
         {
           appIDs: ["U326NK67AQ.com.mathiaslyhr.miflo"],
-          components: [{ "/": "/join/*" }],
+          components: [{ "/": "/join/*" }, { "/": "/add/*" }],
         },
       ],
     },
