@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { BetaBanner } from "./BetaBanner";
 import { DownloadButton } from "./DownloadButton";
 
 const NAV = [
@@ -12,7 +11,6 @@ const NAV = [
 export function SiteHeader() {
   return (
     <>
-      <BetaBanner />
       <header className="sticky top-0 z-40 bg-white/45 backdrop-blur-lg shadow-[0_1px_0_0_rgba(255,255,255,0.55),0_12px_30px_-24px_rgba(20,15,50,0.30)]">
         <div className="mx-auto grid h-16 w-full max-w-6xl grid-cols-[1fr_auto_1fr] items-center px-6">
           {/* logo */}

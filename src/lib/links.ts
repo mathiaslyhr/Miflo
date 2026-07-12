@@ -1,14 +1,10 @@
 // Outbound links + contact, in one place so they're easy to update at launch.
 
-// TestFlight public beta link — paste it here once external testing is set up.
-export const TESTFLIGHT_URL: string = "";
-// App Store listing (id-based link; resolves once the app is approved).
-export const APP_STORE_URL: string = "https://apps.apple.com/app/id6786893093";
+// App Store listing (id-based link; resolves once the app is approved and live).
+export const APP_STORE_URL = "https://apps.apple.com/app/id6786893093";
 
-// What the "Get the app" buttons point at: TestFlight while in beta, then the
-// App Store. Empty until one exists (the button falls back to the feedback page).
-export const DOWNLOAD_URL = TESTFLIGHT_URL || APP_STORE_URL;
-export const HAS_DOWNLOAD = DOWNLOAD_URL !== "";
+// What the "Get the app" buttons point at.
+export const DOWNLOAD_URL = APP_STORE_URL;
 
 // Public contact for the privacy policy. Set up forwarding for this address (or
 // change it) — the in-app/website feedback form is the main channel.
