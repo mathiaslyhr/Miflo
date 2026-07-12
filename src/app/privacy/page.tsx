@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description: "How Miflo handles your data. Short version: barely any of it.",
 };
 
-const LAST_UPDATED = "30 June 2026";
+const LAST_UPDATED = "12 July 2026";
 
 // TODO: replace "Miflo" with the registered legal name/entity once confirmed.
 const CONTROLLER = "Miflo";
@@ -39,7 +39,10 @@ function Section({
 const GLANCE = [
   { title: "No account", body: "Anonymous sign-in. No name, email, or phone." },
   { title: "No tracking", body: "No ads, no analytics, no ATT prompt." },
-  { title: "No device access", body: "No camera, contacts, photos, or location." },
+  {
+    title: "You choose what's shared",
+    body: "Friends, a nickname and a picture only if you opt in.",
+  },
   { title: "Delete on request", body: "Email us and your data is removed." },
 ];
 
@@ -102,34 +105,90 @@ export default function PrivacyPage() {
               You don&apos;t create an account to use Miflo. When you open the
               app it signs in anonymously and stores a random device identifier
               on your phone so it can keep your nickname and reconnect you to a
-              party. We never ask for your name, email, phone number, or
-              other personal details.
+              party. We never ask for your name, email, phone number, or other
+              personal details.
+            </p>
+            <p>
+              Because there&apos;s no login, everything is tied to that
+              anonymous identifier rather than to you personally. It lives on
+              this phone, so deleting or reinstalling the app clears it and
+              there&apos;s nothing for us to hand back or restore.
             </p>
           </Section>
 
           <Section id="what-we-store" title="What we store">
             <p>
-              To run multiplayer games, our backend (Supabase, acting as a data
-              processor on our behalf) stores:
+              To run the games, our backend (Supabase, acting as a data
+              processor on our behalf) stores information tied to your anonymous
+              identifier:
             </p>
             <ul className="list-disc space-y-1 pl-5">
               <li>
-                The parties you create or join (a party code, the anonymous
-                player ids in the party, and scores).
+                The parties you create or join: a party code, the anonymous
+                player ids in the party, nicknames, live game state and scores.
               </li>
               <li>
-                Game results used for your in-app stats (games played, wins,
-                best score), tied to your anonymous device identifier.
+                If you turn on Friends: a display name you choose, a friend code
+                we generate for you, who you&apos;re friends with, and pending
+                friend requests.
               </li>
               <li>
-                The nickname you choose, so other players in your party can see
-                who&apos;s who.
+                Your daily-game results shared with friends: which game, whether
+                you finished, your score and your streak. We never store or
+                share the answer itself.
+              </li>
+              <li>
+                An optional profile picture, if you set one (see below).
               </li>
               <li>
                 Any feedback you send us through the app or this website,
                 including the message and which category you picked.
               </li>
             </ul>
+            <p>
+              Your solo daily puzzles, guesses and streaks are kept on your
+              phone and never leave it. Only the summary above (score and
+              streak, never the answer) is shared, and only with the friends you
+              choose.
+            </p>
+          </Section>
+
+          <Section id="profile-picture" title="Profile picture and photo access">
+            <p>
+              Setting a profile picture is optional. If you choose one, the app
+              asks permission to open your photo library so you can pick an
+              image. Only the photo you select is used. It&apos;s uploaded to our
+              storage and shown to your friends and to other players in a party,
+              so pick something you&apos;re happy for them to see. We don&apos;t
+              browse, scan or upload anything else from your photos, and
+              removing the picture is a tap away in the app.
+            </p>
+          </Section>
+
+          <Section id="notifications" title="Notifications">
+            <p>
+              If you allow notifications, the app registers a push token with
+              Apple&apos;s Push Notification service and stores it against your
+              anonymous identifier so we can send you friend requests, a heads
+              up when someone accepts, and party invites. Other players can never
+              read your token.
+            </p>
+            <p>
+              The daily reminder and streak-saver nudges are scheduled on your
+              phone by the app itself. They stay entirely on your device and
+              nothing about them is sent to us.
+            </p>
+          </Section>
+
+          <Section id="crash-reports" title="Crash reports">
+            <p>
+              To fix the bugs that make the app crash, we use Sentry to collect
+              anonymous diagnostic reports (things like the error and which
+              screen it happened on). Performance tracing is off, and any user
+              identifier is stripped before a report is sent, so these reports
+              aren&apos;t linked to you and aren&apos;t used to track you. We
+              don&apos;t use any third-party analytics.
+            </p>
           </Section>
 
           <Section id="what-we-dont" title="What we don't do">
@@ -142,8 +201,9 @@ export default function PrivacyPage() {
               </li>
               <li>No selling or sharing of data with data brokers.</li>
               <li>
-                No access to your camera, microphone, contacts, photos, or
-                location.
+                No access to your camera, microphone, contacts or location, and
+                no access to your photos beyond the single image you pick for a
+                profile picture.
               </li>
             </ul>
           </Section>
@@ -167,26 +227,38 @@ export default function PrivacyPage() {
             </p>
             <ul className="list-disc space-y-1 pl-5">
               <li>
-                <span className="text-ink">Supabase</span> — database and
-                anonymous authentication for parties, scores, and feedback.
+                <span className="text-ink">Supabase</span>: database and
+                anonymous authentication for parties, friends, scores, and
+                feedback.
               </li>
               <li>
-                <span className="text-ink">Vercel</span> — hosting for this
+                <span className="text-ink">Vercel</span>: hosting for this
                 website and its request logs.
               </li>
               <li>
-                <span className="text-ink">Resend</span> — sends us an email
-                when you submit feedback so we can follow up.
+                <span className="text-ink">Resend</span>: sends us an email when
+                you submit feedback so we can follow up.
+              </li>
+              <li>
+                <span className="text-ink">Apple</span>: delivers push
+                notifications to your device through the Apple Push Notification
+                service.
               </li>
             </ul>
           </Section>
 
           <Section id="retention" title="Data retention and deletion">
             <p>
-              Parties are short-lived and cleared over time. Because Miflo
-              has no login, your data is tied to an anonymous device identifier
+              Parties are short-lived and cleared over time. Because Miflo has
+              no login, your data is tied to an anonymous device identifier
               rather than to you personally. If you&apos;d like your stored game
-              results or feedback removed, contact us and we&apos;ll delete them.
+              results, profile, picture or feedback removed, contact us and
+              we&apos;ll delete them.
+            </p>
+            <p>
+              Deleting the app also clears the anonymous identifier and
+              everything kept on your phone, and leaves any profile you created
+              with no way to sign back into it.
             </p>
           </Section>
 
@@ -195,8 +267,8 @@ export default function PrivacyPage() {
               If you&apos;re in the EU/EEA, the GDPR gives you the right to
               access, correct, or delete your data, and to object to or restrict
               how it&apos;s used. Because Miflo has no login, we identify your
-              data by the anonymous device identifier — share it (or the
-              feedback you sent) when you get in touch so we can find the right
+              data by the anonymous device identifier, so share it (or the
+              feedback you sent) when you get in touch and we can find the right
               records.
             </p>
             <p>
@@ -215,7 +287,7 @@ export default function PrivacyPage() {
                 feedback form
               </a>
               . You also have the right to complain to your local data
-              protection authority — in Denmark that&apos;s Datatilsynet.
+              protection authority, which in Denmark is Datatilsynet.
             </p>
           </Section>
 
@@ -237,9 +309,10 @@ export default function PrivacyPage() {
           <Section id="disclaimer" title="Football disclaimer">
             <p>
               Miflo is not affiliated with, sponsored by, or endorsed by any
-              football league, club, player or governing body. Player names and
-              career statistics are factual information used for trivia
-              purposes. All artwork in Miflo is original illustration.
+              football league, club, player or governing body. Club, competition
+              and country names are used for identification purposes only. Player
+              names and career data are factual information used for trivia. All
+              artwork in Miflo is original illustration.
             </p>
           </Section>
 

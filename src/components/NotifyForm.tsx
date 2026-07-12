@@ -41,7 +41,7 @@ export function NotifyForm() {
           You&apos;re on the list
         </h2>
         <p className="mx-auto mt-2 max-w-sm text-[#0d0d16]/55">
-          We&apos;ll email you the moment Miflo opens up. No spam, just the invite.
+          We&apos;ll email you about big updates and new games. No spam, ever.
         </p>
       </GlassCard>
     );

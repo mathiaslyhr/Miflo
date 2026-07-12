@@ -16,7 +16,7 @@ const base =
  * until then it routes to the /notify beta waitlist page.
  */
 export function DownloadButton({ className = "", children }: Props) {
-  const label = children ?? (HAS_DOWNLOAD ? "Get the beta" : "Get notified");
+  const label = children ?? (HAS_DOWNLOAD ? "Get the app" : "Get notified");
 
   if (HAS_DOWNLOAD) {
     return (

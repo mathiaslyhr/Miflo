@@ -38,7 +38,7 @@ export function CreateRoomScreen() {
         <Field label="Your username" value="Mathias" />
       </div>
       <p className="mt-3 text-[11px] leading-relaxed text-muted">
-        You&apos;ll host the room and share the code with your mates.
+        You&apos;ll host the room and share the code with your friends.
       </p>
       <div className="mt-auto pt-6">
         <PrimaryButton>Create room</PrimaryButton>

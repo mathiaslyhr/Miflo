@@ -14,56 +14,72 @@ export const HAS_DOWNLOAD = DOWNLOAD_URL !== "";
 // change it) — the in-app/website feedback form is the main channel.
 export const CONTACT_EMAIL = "hello@miflo.dk";
 
-// Names + blurbs mirror the app's games catalog (MifloApp i18n `games.*`).
+// Names + blurbs mirror the app's live games catalog (MifloApp `gamesCatalog.ts`
+// / i18n `games.*`). Only the eight games that actually ship are listed. `type`
+// splits the daily solo puzzles from the play-together games; `players` is the
+// audience chip the app shows. Order matches the app's hub.
+export type GameType = "daily" | "together";
+
 export const GAMES = [
   {
-    name: "Hattrick",
-    blurb:
-      "Football trivia meets tic-tac-toe. Claim a square by naming a player who fits the row and the column — first to three in a row takes it.",
-  },
-  {
-    name: "Red Card",
-    blurb:
-      "One of you is faking it. Everyone else knows the footballer — question each other, vote on who to send off.",
-  },
-  {
     name: "Scout",
+    type: "daily",
+    players: "Solo",
     blurb:
-      "Guess the daily footballer in six tries. Every guess lights up green, yellow or grey — a new player drops each day, the same for everyone.",
+      "Guess the daily footballer in ten tries. Every guess lights up green, yellow or grey. A new player drops each day, the same for everyone.",
   },
   {
     name: "Top Bins",
+    type: "daily",
+    players: "Solo",
     blurb:
-      "One football prompt, ten right answers. Race your mates to name the top ten before the clock runs out.",
-  },
-  {
-    name: "Possession",
-    blurb:
-      "Claim the pitch square by square and hold more of the board than everyone else when the whistle goes.",
-  },
-  {
-    name: "Matchday",
-    blurb:
-      "Everyone gets a card of football facts. Tick them off as the answers land — first full row wins.",
+      "One football prompt, ten right answers. Race to name the whole top ten before you run out of misses.",
   },
   {
     name: "Journeyman",
+    type: "daily",
+    players: "Solo",
     blurb:
-      "One career path, club by club. The earlier you name the player, the more it's worth.",
+      "One career path, club by club. Name the player early for more points, and every wrong guess unlocks another hint.",
   },
   {
-    name: "Teamsheet",
+    name: "Team Sheet",
+    type: "daily",
+    players: "Solo",
     blurb:
-      "A famous lineup with names missing. Fill in the teamsheet before your mates do.",
+      "A famous lineup with the names missing. Fill in the whole starting eleven from memory.",
+  },
+  {
+    name: "Hattrick",
+    type: "together",
+    players: "1v1",
+    blurb:
+      "Football trivia meets three in a row. Claim a square by naming a player who fits both the row and the column, and line up three to win.",
   },
   {
     name: "Offside",
+    type: "together",
+    players: "2+",
     blurb:
-      "Four players, one doesn't belong. Spot who's offside and say why.",
+      "Four footballers, three share a hidden link and one doesn't. Spot the odd one out before anyone else.",
   },
   {
     name: "Cult Hero",
+    type: "together",
+    players: "2+",
     blurb:
-      "Everyone's thinking of the same easy answer — the most obscure right answer wins the round.",
+      "Everyone's thinking of the same easy answer. The most obscure right answer wins the round.",
   },
-] as const;
+  {
+    name: "Red Card",
+    type: "together",
+    players: "3+",
+    blurb:
+      "One of you is faking it. Everyone else knows the footballer. Ask questions, then vote on who to send off.",
+  },
+] as const satisfies readonly {
+  name: string;
+  type: GameType;
+  players: string;
+  blurb: string;
+}[];

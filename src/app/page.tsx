@@ -78,10 +78,10 @@ export default function Home() {
               className="mt-4 max-w-xl font-medium leading-[1.05] tracking-tight text-[#0d0d16]"
               style={{ fontSize: "clamp(2rem,5vw,3.25rem)" }}
             >
-              Five games. One party.
+              Eight games. One party.
             </h2>
             <p className="mt-3 max-w-md text-[#0d0d16]/55">
-              Same party, same mates. Pick a game and pass the phone or play
+              Same party, same friends. Pick a game and pass the phone or play
               from your own.
             </p>
 
@@ -177,7 +177,7 @@ export default function Home() {
               Round up your group chat.
             </h2>
             <p className="mx-auto mt-4 max-w-md text-[#0d0d16]/55">
-              Miflo is best with a few mates and something to prove.
+              Miflo is best with a few friends and something to prove.
             </p>
             <div className="mt-8 flex justify-center gap-3">
               <DownloadButton className="text-sm" />

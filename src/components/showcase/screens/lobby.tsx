@@ -26,7 +26,7 @@ export function LobbyScreen({ host = false }: { host?: boolean }) {
           {host ? <CopyCodeButton code="ABCD" /> : <RoomCodeChip code="ABCD" />}
         </div>
         <p className="mt-2 text-[11px] text-muted">
-          {host ? "Tap to copy and share" : "Share it with your mates"}
+          {host ? "Tap to copy and share" : "Share it with your friends"}
         </p>
       </div>
 

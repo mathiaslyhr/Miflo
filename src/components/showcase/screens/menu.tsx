@@ -156,9 +156,9 @@ export function AboutScreen() {
       <BackHeader title="About" />
       <div className="mt-8 flex flex-col items-center text-center">
         <p className="text-3xl font-medium tracking-tight text-ink">Miflo</p>
-        <p className="mt-1 text-[11px] text-muted">Version 1.0 · beta</p>
+        <p className="mt-1 text-[11px] text-muted">Version 1.0</p>
         <p className="mt-4 max-w-[200px] text-[11px] leading-relaxed text-muted">
-          Football games you play with your mates. Made for the group chat.
+          Football games you play with your friends. Made for the group chat.
         </p>
       </div>
 
