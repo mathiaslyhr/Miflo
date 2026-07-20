@@ -9,13 +9,14 @@
  * y=664, and the purple ball is the right leg's terminal at (696,664) r=56.
  *
  * Colours are the app icon's own, sampled from icon-1024.png rather than
- * mapped onto the site tokens: this is the mark people meet on the App Store
- * and their home screen, so the browser tab should show them the same object.
- * The ball is already the brand primary, so the two agree anyway.
+ * mapped onto the site tokens. The ball is already the brand primary, so the
+ * two agree anyway.
  *
- * Both icons are full-bleed rather than transparent. Apple composites
- * transparency onto black or white unpredictably, and a bare mark with no tile
- * loses the shape people actually recognise.
+ * The mark sits on transparency — no tile. Two consequences worth knowing:
+ * a near-black mark is invisible against a dark browser tab bar, and iOS
+ * composites Apple touch icon transparency onto black, so the home-screen
+ * icon has the same problem. Give these a tile if either starts to matter.
+ * With no tile framing it, the mark is scaled up to fill more of the canvas.
  */
 import sharp from "sharp";
 import { fileURLToPath } from "node:url";
@@ -23,7 +24,6 @@ import { dirname, join } from "node:path";
 
 const OUT = join(dirname(fileURLToPath(import.meta.url)), "..", "src", "app");
 
-const BG = "#ffffff";
 const INK = "#0a0a0a";
 const BALL = "#6260ff"; // == --color-primary
 
@@ -49,7 +49,6 @@ function svg(size, inset) {
   const ty = (size - h) / 2;
 
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 ${size} ${size}">
-  <rect width="${size}" height="${size}" fill="${BG}"/>
   <g transform="translate(${tx} ${ty}) scale(${scale}) translate(${-VB.x} ${-VB.y})">
     <path d="${M_LEFT}" stroke="${INK}" stroke-width="${STROKE}" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
     <path d="${M_RIGHT}" stroke="${INK}" stroke-width="${STROKE}" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
@@ -60,14 +59,16 @@ function svg(size, inset) {
 
 const targets = [
   // Browser tab / bookmarks. Next serves this for /icon.png.
-  { file: "icon.png", size: 512, inset: 0.62 },
-  // Apple touch icon. iOS applies its own corner mask, so the art needs a
+  { file: "icon.png", size: 512, inset: 0.88 },
+  // Apple touch icon. iOS applies its own corner mask, so the art keeps a
   // little more breathing room to survive the crop.
-  { file: "apple-icon.png", size: 180, inset: 0.56 },
+  { file: "apple-icon.png", size: 180, inset: 0.78 },
 ];
 
 for (const t of targets) {
   const out = join(OUT, t.file);
-  await sharp(Buffer.from(svg(t.size, t.inset))).png().toFile(out);
+  await sharp(Buffer.from(svg(t.size, t.inset)))
+    .png()
+    .toFile(out);
   console.log(`wrote ${t.file} (${t.size}x${t.size})`);
 }
