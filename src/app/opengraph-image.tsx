@@ -1,11 +1,29 @@
 import { ImageResponse } from "next/og";
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
+import { MIFLO_PALETTE } from "@/lib/palette";
 
-// Branded social share card (used for Open Graph + Twitter).
-export const alt = "Miflo — the football game for your group chat";
+// Social share card (used for Open Graph + Twitter). It mirrors the homepage:
+// the same gradient, the same three nested circles, the same one line of copy —
+// so a shared link previews as the page it opens.
+export const alt = "Miflo — football games for you and your friends";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
+
+/*
+ * Satori (which renders this) supports linear-gradient and border-radius but
+ * not `box-shadow`, so the circles can't carry the white Fresnel rim the live
+ * hero uses. A 3px semi-transparent white border stands in for it — same read
+ * at this size, and it survives the renderer.
+ *
+ * Positions are the desktop geometry from CirclesHero, converted from vw/vh to
+ * this 1200×630 frame.
+ */
+const CIRCLES = [
+  { size: 1740, cx: 960, cy: 252 },
+  { size: 936, cx: 876, cy: 315 },
+  { size: 660, cx: 864, cy: 315 },
+];
 
 export default async function OpengraphImage() {
   const satoshi = await readFile(
@@ -19,75 +37,67 @@ export default async function OpengraphImage() {
           width: "100%",
           height: "100%",
           display: "flex",
-          flexDirection: "column",
-          justifyContent: "space-between",
-          padding: 80,
-          backgroundColor: "#0b0b0f",
-          backgroundImage:
-            "radial-gradient(760px circle at 18% 8%, rgba(98,96,255,0.38), transparent 55%), radial-gradient(680px circle at 92% 96%, rgba(133,131,255,0.24), transparent 55%)",
-          color: "#f5f5f5",
+          position: "relative",
+          backgroundImage: MIFLO_PALETTE.bg,
           fontFamily: "Satoshi",
         }}
       >
-        <div
-          style={{
-            display: "flex",
-            fontSize: 28,
-            letterSpacing: "0.18em",
-            textTransform: "uppercase",
-            color: "#8583ff",
-          }}
-        >
-          Multiplayer football party game · iOS
-        </div>
-
-        <div style={{ display: "flex", flexDirection: "column" }}>
+        {CIRCLES.map((c) => (
           <div
+            key={c.size}
             style={{
-              display: "flex",
-              fontSize: 76,
-              letterSpacing: "-0.03em",
-              lineHeight: 1.05,
-              maxWidth: 900,
+              position: "absolute",
+              left: c.cx - c.size / 2,
+              top: c.cy - c.size / 2,
+              width: c.size,
+              height: c.size,
+              borderRadius: c.size,
+              backgroundImage: MIFLO_PALETTE.circle,
+              border: "3px solid rgba(255,255,255,0.55)",
             }}
-          >
-            The football game for your group chat.
-          </div>
-          {/* Names come from the shipping catalog. This card used to advertise
-              "Tenball" and "Heatmap", both renamed a while back. */}
-          <div style={{ display: "flex", gap: 16, marginTop: 44 }}>
-            {["Hattrick", "Red Card", "Scout", "Top Bins", "Offside"].map(
-              (g, i) => (
-                <div
-                  key={g}
-                  style={{
-                    display: "flex",
-                    fontSize: 28,
-                    padding: "12px 24px",
-                    borderRadius: 999,
-                    backgroundColor: i === 0 ? "#6260ff" : "#17171c",
-                    border: i === 0 ? "1px solid #6260ff" : "1px solid #33333d",
-                    color: i === 0 ? "#ffffff" : "#a3a3a3",
-                  }}
-                >
-                  {g}
-                </div>
-              ),
-            )}
-          </div>
-        </div>
+          />
+        ))}
 
         <div
           style={{
+            position: "absolute",
+            left: 0,
+            top: 0,
+            width: "100%",
+            height: "100%",
             display: "flex",
+            flexDirection: "column",
             justifyContent: "space-between",
-            alignItems: "flex-end",
-            fontSize: 34,
+            padding: 80,
+            color: "#ffffff",
           }}
         >
-          <div style={{ display: "flex", letterSpacing: "-0.02em" }}>Miflo</div>
-          <div style={{ display: "flex", fontSize: 26, color: "#a3a3a3" }}>
-            miflo.dk
+          <div style={{ display: "flex", fontSize: 40, letterSpacing: "-0.02em" }}>
+            Miflo
+          </div>
+
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <div
+              style={{
+                display: "flex",
+                fontSize: 76,
+                letterSpacing: "-0.03em",
+                lineHeight: 1.05,
+                maxWidth: 820,
+              }}
+            >
+              Football games for you and your friends.
+            </div>
+            <div
+              style={{
+                display: "flex",
+                marginTop: 28,
+                fontSize: 30,
+                color: "rgba(255,255,255,0.75)",
+              }}
+            >
+              Free on iPhone · miflo.dk
+            </div>
           </div>
         </div>
       </div>

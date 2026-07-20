@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import { SiteHeader } from "@/components/SiteHeader";
-import { Card } from "@/components/ui";
+import { Sheet } from "@/components/ui";
 import { CONTACT_EMAIL } from "@/lib/links";
 
 export const metadata: Metadata = {
@@ -48,35 +47,35 @@ const GLANCE = [
 
 export default function PrivacyPage() {
   return (
-    <>
-      <SiteHeader />
-      <main className="flex-1">
-        {/* Hero header */}
-        <section className="relative overflow-hidden">
-          <div className="relative mx-auto w-full max-w-3xl px-6 py-16 sm:py-24">
-            <h1
-              className="text-balance font-medium leading-[1.05] tracking-tight text-ink"
-              style={{ fontSize: "clamp(2.5rem,6vw,3.75rem)" }}
-            >
-              Privacy Policy
-            </h1>
-            <p className="mt-3 text-sm text-faint">
-              Last updated {LAST_UPDATED}
-            </p>
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">
-              Miflo is built to need as little of your data as possible. There
-              are no user accounts, no tracking, and no advertising. This page
-              explains exactly what the app and this website do with information.
-            </p>
-          </div>
-        </section>
+    // One Sheet around the whole document rather than one per section: the
+    // policy is long, and a stack of separate scrims would have the reader
+    // looking through a new pane of frosted glass every few paragraphs.
+    <main className="flex-1 px-4 pt-28 pb-16 sm:px-6 sm:pb-24">
+      <div className="mx-auto w-full max-w-3xl">
+        <Sheet>
+          <h1
+            className="text-balance font-medium leading-[1.05] tracking-tight text-ink"
+            style={{ fontSize: "clamp(2.5rem,6vw,3.75rem)" }}
+          >
+            Privacy Policy
+          </h1>
+          <p className="mt-3 text-sm text-faint">Last updated {LAST_UPDATED}</p>
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">
+            Miflo is built to need as little of your data as possible. There are
+            no user accounts, no tracking, and no advertising. This page explains
+            exactly what the app and this website do with information.
+          </p>
 
-        {/* At a glance */}
-        <section className="relative mx-auto w-full max-w-3xl px-6 pt-12">
-          <div className="grid gap-3 sm:grid-cols-2">
+          {/* At a glance. These were `Card`s — solid raised surfaces that made
+              sense on a flat page. Inside a frosted sheet a second opaque layer
+              reads as a box in a box, so they're plain rimmed rows now. */}
+          <div className="mt-10 grid gap-3 sm:grid-cols-2">
             {GLANCE.map((item) => (
-              <Card key={item.title} className="flex items-center gap-4 !p-5">
-                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-rim-2 bg-surface-2 text-accent-ink">
+              <div
+                key={item.title}
+                className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/5 p-5"
+              >
+                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-white/15 bg-white/10 text-accent-ink">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
                     <path
                       d="M5 12.5l4.5 4.5L19 7"
@@ -93,12 +92,11 @@ export default function PrivacyPage() {
                     {item.body}
                   </p>
                 </div>
-              </Card>
+              </div>
             ))}
           </div>
-        </section>
 
-        <article className="mx-auto w-full max-w-3xl px-6 pb-20 pt-12">
+          <article>
           <Section id="no-account" title="No account, no personal sign-up">
             <p>
               You don&apos;t create an account to use Miflo. When you open the
@@ -335,8 +333,9 @@ export default function PrivacyPage() {
               .
             </p>
           </Section>
-        </article>
-      </main>
-    </>
+          </article>
+        </Sheet>
+      </div>
+    </main>
   );
 }

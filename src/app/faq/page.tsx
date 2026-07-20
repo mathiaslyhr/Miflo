@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { SiteHeader } from "@/components/SiteHeader";
+import { Sheet } from "@/components/ui";
 
 export const metadata: Metadata = {
   title: "FAQ — Miflo",
@@ -56,52 +56,51 @@ const FAQS = [
 
 export default function FaqPage() {
   return (
-    <>
-      <SiteHeader />
-      <main className="relative flex-1">
-        <section className="relative">
-          <div className="relative mx-auto w-full max-w-3xl px-6 py-16 sm:py-24">
-            <h1
-              className="font-medium leading-[1.05] tracking-tight text-ink"
-              style={{ fontSize: "clamp(2.25rem,6vw,3.5rem)" }}
-            >
-              Good to know.
-            </h1>
-            <p className="mt-4 max-w-xl text-lg leading-relaxed text-muted">
-              Everything you might want to check before you round up the group
-              chat.
-            </p>
+    // pt-28 clears the floating nav pill, which no longer occupies layout space
+    // the way the old sticky header did.
+    <main className="relative flex-1 px-4 pt-28 pb-16 sm:px-6 sm:pb-24">
+      <div className="mx-auto w-full max-w-3xl">
+        <Sheet>
+          <h1
+            className="font-medium leading-[1.05] tracking-tight text-ink"
+            style={{ fontSize: "clamp(2.25rem,6vw,3.5rem)" }}
+          >
+            Good to know.
+          </h1>
+          <p className="mt-4 max-w-xl text-lg leading-relaxed text-muted">
+            Everything you might want to check before you round up the group
+            chat.
+          </p>
 
-            <div className="mt-12 flex flex-col divide-y divide-divider border-t border-divider">
-              {FAQS.map((faq) => (
-                <details key={faq.q} className="group py-5">
-                  <summary className="flex cursor-pointer list-none items-center justify-between gap-6 text-lg font-medium text-ink [&::-webkit-details-marker]:hidden">
-                    {faq.q}
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      aria-hidden
-                      className="shrink-0 text-faint transition-transform duration-300 ease-[cubic-bezier(0.34,1.25,0.64,1)] group-open:rotate-45"
-                    >
-                      <path
-                        d="M12 5v14M5 12h14"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                      />
-                    </svg>
-                  </summary>
-                  <p className="mt-3 max-w-2xl leading-relaxed text-muted">
-                    {faq.a}
-                  </p>
-                </details>
-              ))}
-            </div>
+          <div className="mt-12 flex flex-col divide-y divide-white/10 border-t border-white/10">
+            {FAQS.map((faq) => (
+              <details key={faq.q} className="group py-5">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-6 text-lg font-medium text-ink [&::-webkit-details-marker]:hidden">
+                  {faq.q}
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    aria-hidden
+                    className="shrink-0 text-faint transition-transform duration-300 ease-[cubic-bezier(0.34,1.25,0.64,1)] group-open:rotate-45"
+                  >
+                    <path
+                      d="M12 5v14M5 12h14"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                    />
+                  </svg>
+                </summary>
+                <p className="mt-3 max-w-2xl leading-relaxed text-muted">
+                  {faq.a}
+                </p>
+              </details>
+            ))}
           </div>
-        </section>
-      </main>
-    </>
+        </Sheet>
+      </div>
+    </main>
   );
 }

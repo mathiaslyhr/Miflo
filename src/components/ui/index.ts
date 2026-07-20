@@ -1,16 +1,19 @@
 /*
- * Note on what's missing: there is no `Eyebrow` export any more.
+ * What's missing, and why.
  *
- * The light site put a small uppercase tracked kicker above every section
- * ("THE GAMES", "HOW IT WORKS", "MADE FOR THE MOMENT", "FAQ", "GUIDE"). One
- * named kicker used deliberately is a brand system; one above every heading is
- * scaffolding that adds a line of shouting and no information. Headings carry
- * their own sections now. Reach for a `Chip` if a section genuinely needs a
+ * `Bento`, `Meter`/`AnimatedMeter`/`SegmentMeter` and `HeroGlow` are gone along
+ * with the marketing homepage that was their only caller — the bento grid of
+ * games, the fake countdown bars, the purple bloom behind the old hero. The
+ * gradient is the page's visual now, so nothing needs a bloom behind it.
+ *
+ * There is no `Eyebrow` either: the old site put a small uppercase kicker above
+ * every section, which is scaffolding rather than a brand system. Headings
+ * carry their own sections. Reach for a `Chip` if a section genuinely needs a
  * label, not a decorative all-caps line.
  */
 
-export { HeroGlow } from "./HeroGlow";
 export { PRESS_BASE, CTRL } from "./motion";
+export { Sheet } from "./Sheet";
 export {
   SolidButton,
   OutlineButton,
@@ -21,5 +24,3 @@ export {
   Toggle,
 } from "./controls";
 export { Card, Raised, CardHeader, CardDivider, CardRow } from "./Card";
-export { Meter, AnimatedMeter, SegmentMeter, type MeterTone } from "./Meter";
-export { Bento, BentoItem } from "./Bento";

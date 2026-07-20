@@ -14,27 +14,29 @@ const satoshi = localFont({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://miflo.dk"),
-  title: "Miflo — the football game for your group chat",
+  title: "Miflo — football games for you and your friends",
   description:
-    "Miflo is a fast multiplayer football party game for iOS. Start a party, share a code, and play Hattrick, Red Card, Scout, and more together. No sign-up.",
+    "Football games for you and your friends. Free on iPhone, no sign-up.",
   openGraph: {
-    title: "Miflo — the football game for your group chat",
+    title: "Miflo — football games for you and your friends",
     description:
-      "Fast multiplayer football games for iOS. Join with a code and play together.",
+      "Football games for you and your friends. Free on iPhone, no sign-up.",
     url: "https://miflo.dk",
     siteName: "Miflo",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Miflo — the football game for your group chat",
+    title: "Miflo — football games for you and your friends",
     description:
-      "Fast multiplayer football games for iOS. Join with a code and play together.",
+      "Football games for you and your friends. Free on iPhone, no sign-up.",
   },
 };
 
+// Matches the dark end of the gradient, so mobile browser chrome blends into
+// the top of the page rather than banding against it.
 export const viewport: Viewport = {
-  themeColor: "#0b0b0f",
+  themeColor: "#17123f",
 };
 
 export default function RootLayout({
@@ -44,7 +46,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${satoshi.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col bg-bg">
+      <body className="min-h-full flex flex-col">
         <RootShell>{children}</RootShell>
       </body>
     </html>
