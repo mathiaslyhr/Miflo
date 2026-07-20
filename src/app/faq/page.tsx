@@ -59,7 +59,7 @@ export default function FaqPage() {
     // pt-28 clears the floating nav pill, which no longer occupies layout space
     // the way the old sticky header did.
     <main className="relative flex-1 px-4 pt-28 pb-16 sm:px-6 sm:pb-24">
-      <div className="mx-auto w-full max-w-3xl">
+      <div className="mx-auto w-full max-w-5xl">
         <Sheet>
           <h1
             className="font-medium leading-[1.05] tracking-tight text-ink"
@@ -67,7 +67,7 @@ export default function FaqPage() {
           >
             Good to know.
           </h1>
-          <p className="mt-4 max-w-xl text-lg leading-relaxed text-muted">
+          <p className="mt-4 max-w-4xl text-lg leading-relaxed text-muted">
             Everything you might want to check before you round up the group
             chat.
           </p>
@@ -93,7 +93,7 @@ export default function FaqPage() {
                     />
                   </svg>
                 </summary>
-                <p className="mt-3 max-w-2xl leading-relaxed text-muted">
+                <p className="mt-3 max-w-4xl leading-relaxed text-muted">
                   {faq.a}
                 </p>
               </details>

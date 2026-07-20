@@ -1,66 +1,55 @@
 import Link from "next/link";
-import { PRESS_BASE } from "@/components/ui";
-import { CONTACT_EMAIL } from "@/lib/links";
+import { BrandMark } from "@/components/BrandMark";
+import { GLASS_PILL, PRESS_BASE } from "@/components/ui";
 
 /*
- * The frosted pill, centred at the top of every page.
+ * Two pieces pinned to the top: the mark in the left corner, and a floating
+ * pill of links centred above it.
  *
- * It replaces the old full-width sticky header. That header was a solid bar the
- * width of the viewport, which worked when the page beneath it was a flat
- * colour — it can't work now, because the thing beneath it is a moving
- * gradient, and a solid bar would slice the top off it. A floating pill leaves
- * the background whole.
+ * They're separate on purpose. The brand used to be the first item inside the
+ * pill, which made it read as another menu entry — one of four things you could
+ * click, rather than the thing that owns the page. Out in the corner it's
+ * identity; in the middle is navigation.
  *
- * The press feel comes from PRESS_BASE (components/ui/motion.ts), the same
- * CSS-only scale-down the rest of the site uses. There is deliberately no
- * Framer-based pressable here: PRESS_BASE already encodes the identical
- * spring, so using it keeps this a server component with no client JS.
+ * The mark keeps a real hit area and an accessible name even though the glyph
+ * itself is decorative: BrandMark is aria-hidden, so the link carries the label.
  *
- * The pill is dark with white text because it sits over the dark end of the
- * gradient.
- *
- * On density: 55% was enough over the gradient alone, but the pill is fixed and
- * long pages scroll *under* it — at 55% the body text smeared through it as it
- * passed. 85% plus a heavier blur obscures whatever is behind while still
- * reading as frosted rather than solid.
+ * There's deliberately no full-width bar. A solid header would slice the top off
+ * the gradient; a floating pill leaves it whole.
  */
 
 const ITEMS = [
   { label: "Privacy", href: "/privacy" },
   { label: "FAQ", href: "/faq" },
+  { label: "Contact", href: "/contact" },
 ];
-
-const item =
-  `${PRESS_BASE} rounded-full px-3.5 py-1.5 tracking-tight ` +
-  "text-white/65 hover:text-white";
 
 export function SiteNav() {
   return (
-    <div className="pointer-events-none fixed inset-x-0 top-0 z-30 flex justify-center p-4 sm:p-5">
+    <div className="pointer-events-none fixed inset-x-0 top-0 z-30 flex items-center p-4 sm:p-5">
+      <Link
+        href="/"
+        aria-label="Miflo — home"
+        className={`${PRESS_BASE} pointer-events-auto rounded-xl p-1`}
+      >
+        <BrandMark size={30} />
+      </Link>
+
+      {/* Centred independently of the mark, so the pill stays optically in the
+          middle of the viewport rather than in the middle of the leftover space. */}
       <nav
         aria-label="Main"
-        className={
-          "pointer-events-auto flex items-center gap-0.5 rounded-full border " +
-          "border-white/18 bg-neutral-950/85 p-1.5 text-[15px] font-medium " +
-          "text-white shadow-[0_8px_30px_rgba(0,0,0,0.35)] backdrop-blur-xl"
-        }
+        className={`pointer-events-auto absolute left-1/2 -translate-x-1/2 flex items-center gap-0.5 rounded-full p-1.5 text-[15px] font-medium text-white ${GLASS_PILL}`}
       >
-        <Link
-          href="/"
-          className={`${PRESS_BASE} rounded-full px-3.5 py-1.5 tracking-tight text-white`}
-        >
-          Miflo
-        </Link>
-
         {ITEMS.map(({ label, href }) => (
-          <Link key={href} href={href} className={item}>
+          <Link
+            key={href}
+            href={href}
+            className={`${PRESS_BASE} rounded-full px-3.5 py-1.5 tracking-tight text-white/70 hover:text-white`}
+          >
             {label}
           </Link>
         ))}
-
-        <a href={`mailto:${CONTACT_EMAIL}`} className={item}>
-          Contact
-        </a>
       </nav>
     </div>
   );

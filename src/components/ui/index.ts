@@ -14,6 +14,7 @@
 
 export { PRESS_BASE, CTRL } from "./motion";
 export { Sheet } from "./Sheet";
+export { GLASS_PILL, GLASS_SHEET, GLASS_INSET } from "./glass";
 export {
   SolidButton,
   OutlineButton,

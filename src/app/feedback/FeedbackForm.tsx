@@ -3,7 +3,7 @@
 import { useActionState, useState } from "react";
 import { useFormStatus } from "react-dom";
 import { submitFeedbackAction, type FeedbackState } from "./actions";
-import { Card, CTRL } from "@/components/ui";
+import { CTRL, GLASS_INSET } from "@/components/ui";
 
 const CATEGORIES = [
   { value: "general", label: "General" },
@@ -19,7 +19,7 @@ function SubmitButton() {
     <button
       type="submit"
       disabled={pending}
-      className={`${CTRL} shrink-0 rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-ink disabled:pointer-events-none disabled:opacity-50`}
+      className={`${CTRL} shrink-0 rounded-full bg-white px-5 py-2.5 text-sm font-medium text-neutral-950 hover:bg-white/90 disabled:pointer-events-none disabled:opacity-50`}
     >
       {pending ? "Sending…" : "Send feedback"}
     </button>
@@ -32,12 +32,12 @@ export function FeedbackForm() {
 
   if (state.status === "success") {
     return (
-      <Card className="!p-8 text-center">
+      <div className={`rounded-2xl p-8 text-center ${GLASS_INSET}`}>
         <h2 className="text-2xl font-medium text-ink">Thank you</h2>
         <p className="mx-auto mt-2 max-w-sm text-muted">
           Your feedback helps shape Miflo. We read everything.
         </p>
-      </Card>
+      </div>
     );
   }
 
@@ -56,7 +56,7 @@ export function FeedbackForm() {
                 className={`${CTRL} rounded-full border px-4 py-3 text-center text-sm font-medium ${
                   selected
                     ? "border-primary bg-primary text-white"
-                    : "border-rim-2 bg-surface-2 text-muted hover:bg-surface-3 hover:text-ink"
+                    : `${GLASS_INSET} text-muted hover:bg-white/10 hover:text-ink`
                 }`}
               >
                 <input
@@ -87,7 +87,7 @@ export function FeedbackForm() {
           placeholder="Questions, bugs, or things you'd love to see in Miflo"
           // placeholder:text-muted, not faint: placeholder text has to clear
           // the same 4.5:1 as body copy.
-          className="w-full resize-y rounded-2xl border border-rim-2 bg-surface-2 px-4 py-3 text-ink placeholder:text-muted"
+          className={`w-full resize-y rounded-2xl px-4 py-3 text-ink placeholder:text-muted ${GLASS_INSET}`}
         />
       </div>
 

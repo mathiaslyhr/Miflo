@@ -1,5 +1,5 @@
 import { AutoOpenApp } from "@/components/AutoOpenApp";
-import { OutlineButton, Sheet, SolidButton } from "@/components/ui";
+import { GLASS_INSET, OutlineButton, Sheet, SolidButton } from "@/components/ui";
 
 /**
  * The shared layout behind /join/<code> and /add/<code>.
@@ -41,7 +41,7 @@ export function CodeLanding({
               {intro}
             </p>
 
-            <div className="mx-auto mt-10 w-fit rounded-2xl border border-white/12 bg-white/5 px-10 py-6">
+            <div className={`mx-auto mt-10 w-fit rounded-2xl px-10 py-6 ${GLASS_INSET}`}>
               <p className="text-xs font-medium uppercase tracking-[0.18em] text-faint">
                 {kind}
               </p>

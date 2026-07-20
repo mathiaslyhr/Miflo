@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import { Sheet } from "@/components/ui";
+import { GLASS_INSET, Sheet } from "@/components/ui";
 import { CONTACT_EMAIL } from "@/lib/links";
 
 export const metadata: Metadata = {
@@ -51,7 +51,7 @@ export default function PrivacyPage() {
     // policy is long, and a stack of separate scrims would have the reader
     // looking through a new pane of frosted glass every few paragraphs.
     <main className="flex-1 px-4 pt-28 pb-16 sm:px-6 sm:pb-24">
-      <div className="mx-auto w-full max-w-3xl">
+      <div className="mx-auto w-full max-w-5xl">
         <Sheet>
           <h1
             className="text-balance font-medium leading-[1.05] tracking-tight text-ink"
@@ -60,7 +60,7 @@ export default function PrivacyPage() {
             Privacy Policy
           </h1>
           <p className="mt-3 text-sm text-faint">Last updated {LAST_UPDATED}</p>
-          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">
+          <p className="mt-6 max-w-4xl text-lg leading-relaxed text-muted">
             Miflo is built to need as little of your data as possible. There are
             no user accounts, no tracking, and no advertising. This page explains
             exactly what the app and this website do with information.
@@ -69,11 +69,11 @@ export default function PrivacyPage() {
           {/* At a glance. These were `Card`s — solid raised surfaces that made
               sense on a flat page. Inside a frosted sheet a second opaque layer
               reads as a box in a box, so they're plain rimmed rows now. */}
-          <div className="mt-10 grid gap-3 sm:grid-cols-2">
+          <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {GLANCE.map((item) => (
               <div
                 key={item.title}
-                className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/5 p-5"
+                className={`flex items-center gap-4 rounded-2xl p-5 ${GLASS_INSET}`}
               >
                 <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-white/15 bg-white/10 text-accent-ink">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
