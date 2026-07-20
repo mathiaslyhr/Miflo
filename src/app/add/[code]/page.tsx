@@ -7,7 +7,7 @@ import { APP_STORE_URL } from "@/lib/links";
 // request) and this page is never seen — it's the fallback for friends
 // without the app (or link previews).
 export const metadata: Metadata = {
-  title: "Add a friend — Miflo",
+  title: "Add a friend · Miflo",
   description:
     "Someone wants to be your friend on Miflo. Grab the app and add them.",
   robots: { index: false },

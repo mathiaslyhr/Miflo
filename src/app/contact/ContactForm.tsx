@@ -31,8 +31,8 @@ export function ContactForm() {
       <div className={`rounded-2xl p-8 text-center ${GLASS_INSET}`}>
         <h2 className="text-2xl font-medium text-ink">Message sent</h2>
         <p className="mx-auto mt-2 max-w-sm text-muted">
-          Thanks — it goes straight to a real inbox. You&apos;ll hear back if you
-          left an email.
+          Thanks. It goes straight to a real inbox, and you&apos;ll hear back if
+          you left an email.
         </p>
       </div>
     );
@@ -49,15 +49,22 @@ export function ContactForm() {
         </div>
         <div>
           <label htmlFor="email" className="mb-2 block text-sm text-muted">
-            Email <span className="text-faint">— so I can reply</span>
+            Email
           </label>
           <input
             id="email"
             name="email"
             type="email"
             maxLength={200}
+            // Described by the hint rather than a parenthetical in the label,
+            // so a screen reader announces the field name cleanly and the
+            // explanation follows.
+            aria-describedby="email-hint"
             className={field}
           />
+          <p id="email-hint" className="mt-2 text-sm text-faint">
+            Optional. Add it if you&apos;d like a reply.
+          </p>
         </div>
       </div>
 

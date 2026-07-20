@@ -25,7 +25,7 @@ export async function notifyNewFeedback(
       to,
       subject: `New Miflo feedback · ${category}`,
       replyTo: "hello@miflo.dk",
-      text: `Category: ${category}\n\n${message}\n\n— sent from miflo.dk`,
+      text: `Category: ${category}\n\n${message}\n\nSent from miflo.dk`,
     });
   } catch {
     // Swallow: the feedback is already saved in Supabase; email is a bonus.

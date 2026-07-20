@@ -6,7 +6,7 @@ import { APP_STORE_URL } from "@/lib/links";
 // app directly via Universal Links and this page is never seen — it's the
 // fallback for friends without the app (or link previews).
 export const metadata: Metadata = {
-  title: "Join a party — Miflo",
+  title: "Join a party · Miflo",
   description: "You've been invited to a Miflo party. Grab the app and jump in.",
   robots: { index: false },
 };

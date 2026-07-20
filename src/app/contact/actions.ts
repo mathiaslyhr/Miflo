@@ -106,7 +106,7 @@ async function notifyContact({
       // Reply-to is the sender, not hello@miflo.dk — the whole point is being
       // able to hit reply and reach the person who wrote in.
       ...(email ? { replyTo: email } : {}),
-      text: `From: ${name || "(no name)"}\nEmail: ${email || "(none given)"}\n\n${message}\n\n— sent from miflo.dk/contact`,
+      text: `From: ${name || "(no name)"}\nEmail: ${email || "(none given)"}\n\n${message}\n\nSent from miflo.dk/contact`,
     });
   } catch {
     // Swallow: the message is already durable in Supabase.

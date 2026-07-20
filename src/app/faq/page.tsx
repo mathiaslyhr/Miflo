@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Sheet } from "@/components/ui";
 
 export const metadata: Metadata = {
-  title: "FAQ — Miflo",
+  title: "FAQ · Miflo",
   description:
     "Answers to the common questions about Miflo: is it free, what you need to play, how friends work without a login, the games, the daily puzzles, and the players.",
 };
@@ -38,7 +38,7 @@ const FAQS = [
   },
   {
     q: "Do new players and games need an App Store update?",
-    a: "Almost never. New players, fixes, and the artwork that goes with them — player pictures, club crests and flags — all reach the app on their own, usually within a minute. Only a brand-new game needs an App Store update.",
+    a: "Almost never. New players, fixes, and the artwork that goes with them (player pictures, club crests and flags) all reach the app on their own, usually within a minute. Only a brand-new game needs an App Store update.",
   },
   {
     q: "What languages is Miflo in?",

@@ -3,7 +3,7 @@ import { Sheet } from "@/components/ui";
 import { FeedbackForm } from "./FeedbackForm";
 
 export const metadata: Metadata = {
-  title: "Feedback — Miflo",
+  title: "Feedback · Miflo",
   description:
     "Send questions, report a bug, or suggest something you'd love to see in Miflo.",
 };

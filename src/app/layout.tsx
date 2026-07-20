@@ -14,11 +14,11 @@ const satoshi = localFont({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://miflo.dk"),
-  title: "Miflo — football games for you and your friends",
+  title: "Miflo · Football games for you and your friends",
   description:
     "Football games for you and your friends. Free on iPhone, no sign-up.",
   openGraph: {
-    title: "Miflo — football games for you and your friends",
+    title: "Miflo · Football games for you and your friends",
     description:
       "Football games for you and your friends. Free on iPhone, no sign-up.",
     url: "https://miflo.dk",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Miflo — football games for you and your friends",
+    title: "Miflo · Football games for you and your friends",
     description:
       "Football games for you and your friends. Free on iPhone, no sign-up.",
   },

@@ -6,7 +6,7 @@ import { MIFLO_PALETTE } from "@/lib/palette";
 // Social share card (used for Open Graph + Twitter). It mirrors the homepage:
 // the same gradient, the same three nested circles, the same one line of copy —
 // so a shared link previews as the page it opens.
-export const alt = "Miflo — football games for you and your friends";
+export const alt = "Miflo · Football games for you and your friends";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 

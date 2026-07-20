@@ -29,7 +29,7 @@ export function SiteNav() {
     <div className="pointer-events-none fixed inset-x-0 top-0 z-30 flex items-center p-4 sm:p-5">
       <Link
         href="/"
-        aria-label="Miflo — home"
+        aria-label="Miflo home"
         className={`${PRESS_BASE} pointer-events-auto rounded-xl p-1`}
       >
         <BrandMark size={30} />

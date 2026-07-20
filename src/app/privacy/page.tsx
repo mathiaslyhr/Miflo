@@ -4,7 +4,7 @@ import { GLASS_INSET, Sheet } from "@/components/ui";
 import { CONTACT_EMAIL } from "@/lib/links";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy — Miflo",
+  title: "Privacy Policy · Miflo",
   description: "How Miflo handles your data. Short version: barely any of it.",
 };
 
