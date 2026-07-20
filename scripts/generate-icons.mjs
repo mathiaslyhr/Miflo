@@ -8,10 +8,14 @@
  * grid: legs at x=312/504/696, arches spring at y=456, hump radius 96, baseline
  * y=664, and the purple ball is the right leg's terminal at (696,664) r=56.
  *
- * Both icons are full-bleed on the page colour rather than transparent. A
- * transparent mark would be a white `m` with nothing behind it, which vanishes
- * against a light browser tab bar; Apple also composites transparency onto
- * black or white unpredictably. A solid dark tile reads on both.
+ * Colours are the app icon's own, sampled from icon-1024.png rather than
+ * mapped onto the site tokens: this is the mark people meet on the App Store
+ * and their home screen, so the browser tab should show them the same object.
+ * The ball is already the brand primary, so the two agree anyway.
+ *
+ * Both icons are full-bleed rather than transparent. Apple composites
+ * transparency onto black or white unpredictably, and a bare mark with no tile
+ * loses the shape people actually recognise.
  */
 import sharp from "sharp";
 import { fileURLToPath } from "node:url";
@@ -19,9 +23,9 @@ import { dirname, join } from "node:path";
 
 const OUT = join(dirname(fileURLToPath(import.meta.url)), "..", "src", "app");
 
-const BG = "#0b0b0f"; // --color-bg
-const INK = "#f5f5f5"; // --color-ink
-const BALL = "#6260ff"; // --color-primary
+const BG = "#ffffff";
+const INK = "#0a0a0a";
+const BALL = "#6260ff"; // == --color-primary
 
 const STROKE = 92;
 const M_LEFT = "M 312 664 L 312 456 A 96 96 0 0 1 504 456 L 504 664";
