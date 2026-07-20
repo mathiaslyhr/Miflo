@@ -38,7 +38,7 @@ const FAQS = [
   },
   {
     q: "Do new players and games need an App Store update?",
-    a: "New players and fixes reach the app on their own, usually within a minute, with no update needed. Player pictures, club crests and flags are the exception: those arrive with an app update, along with any brand-new games.",
+    a: "Almost never. New players, fixes, and the artwork that goes with them — player pictures, club crests and flags — all reach the app on their own, usually within a minute. Only a brand-new game needs an App Store update.",
   },
   {
     q: "What languages is Miflo in?",
