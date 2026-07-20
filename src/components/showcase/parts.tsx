@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { formatNumber } from "@/lib/topics";
+import { timerColor } from "@/components/ui/Meter";
 import {
   CheckIcon,
   CopyIcon,
@@ -152,17 +153,8 @@ export function AnswerOption({
 /* Timers                                                                      */
 /* -------------------------------------------------------------------------- */
 
-/**
- * Countdown colour scale, as time runs down: dark green → light green →
- * yellow → orange → red. `progress` is fraction of time remaining (1 → 0).
- */
-export function timerColor(progress: number): string {
-  if (progress > 0.8) return "var(--color-timer-1)"; // dark green — loads of time
-  if (progress > 0.6) return "var(--color-timer-2)"; // light green
-  if (progress > 0.4) return "var(--color-timer-3)"; // yellow
-  if (progress > 0.2) return "var(--color-timer-4)"; // orange
-  return "var(--color-timer-5)"; // red — almost out
-}
+/** Re-exported so there is exactly one countdown scale on the site. */
+export { timerColor };
 
 /** Linear countdown bar — matches the QuizScreen footer. */
 export function TimerBar({

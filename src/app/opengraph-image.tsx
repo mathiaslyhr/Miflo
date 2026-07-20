@@ -22,10 +22,10 @@ export default async function OpengraphImage() {
           flexDirection: "column",
           justifyContent: "space-between",
           padding: 80,
-          backgroundColor: "#f5f2fc",
+          backgroundColor: "#0b0b0f",
           backgroundImage:
-            "radial-gradient(760px circle at 18% 8%, rgba(98,96,246,0.30), transparent 55%), radial-gradient(680px circle at 92% 96%, rgba(150,140,250,0.28), transparent 55%)",
-          color: "#0d0d16",
+            "radial-gradient(760px circle at 18% 8%, rgba(98,96,255,0.38), transparent 55%), radial-gradient(680px circle at 92% 96%, rgba(133,131,255,0.24), transparent 55%)",
+          color: "#f5f5f5",
           fontFamily: "Satoshi",
         }}
       >
@@ -35,7 +35,7 @@ export default async function OpengraphImage() {
             fontSize: 28,
             letterSpacing: "0.18em",
             textTransform: "uppercase",
-            color: "#4a48d6",
+            color: "#8583ff",
           }}
         >
           Multiplayer football party game · iOS
@@ -53,22 +53,27 @@ export default async function OpengraphImage() {
           >
             The football game for your group chat.
           </div>
+          {/* Names come from the shipping catalog. This card used to advertise
+              "Tenball" and "Heatmap", both renamed a while back. */}
           <div style={{ display: "flex", gap: 16, marginTop: 44 }}>
-            {["Hattrick", "Red Card", "Scout", "Tenball", "Heatmap"].map((g, i) => (
-              <div
-                key={g}
-                style={{
-                  display: "flex",
-                  fontSize: 28,
-                  padding: "12px 24px",
-                  borderRadius: 999,
-                  backgroundColor: i === 0 ? "#6260f6" : "rgba(255,255,255,0.55)",
-                  color: i === 0 ? "#ffffff" : "#5b5b6b",
-                }}
-              >
-                {g}
-              </div>
-            ))}
+            {["Hattrick", "Red Card", "Scout", "Top Bins", "Offside"].map(
+              (g, i) => (
+                <div
+                  key={g}
+                  style={{
+                    display: "flex",
+                    fontSize: 28,
+                    padding: "12px 24px",
+                    borderRadius: 999,
+                    backgroundColor: i === 0 ? "#6260ff" : "#17171c",
+                    border: i === 0 ? "1px solid #6260ff" : "1px solid #33333d",
+                    color: i === 0 ? "#ffffff" : "#a3a3a3",
+                  }}
+                >
+                  {g}
+                </div>
+              ),
+            )}
           </div>
         </div>
 
@@ -81,7 +86,7 @@ export default async function OpengraphImage() {
           }}
         >
           <div style={{ display: "flex", letterSpacing: "-0.02em" }}>Miflo</div>
-          <div style={{ display: "flex", fontSize: 26, color: "#5b5b6b" }}>
+          <div style={{ display: "flex", fontSize: 26, color: "#a3a3a3" }}>
             miflo.dk
           </div>
         </div>

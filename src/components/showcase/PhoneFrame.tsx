@@ -19,15 +19,15 @@ export function PhoneFrame({
   return (
     <div className="relative mx-auto w-full max-w-[260px]">
       {/* side buttons (silent + volume on the left, power on the right) */}
-      <span className="absolute -left-[2px] top-[96px] h-7 w-[3px] rounded-l-sm bg-[#b8b8be]" />
-      <span className="absolute -left-[2px] top-[140px] h-12 w-[3px] rounded-l-sm bg-[#b8b8be]" />
-      <span className="absolute -left-[2px] top-[196px] h-12 w-[3px] rounded-l-sm bg-[#b8b8be]" />
-      <span className="absolute -right-[2px] top-[168px] h-16 w-[3px] rounded-r-sm bg-[#b8b8be]" />
+      <span className="absolute -left-[2px] top-[96px] h-7 w-[3px] rounded-l-sm bg-[#4a4a52]" />
+      <span className="absolute -left-[2px] top-[140px] h-12 w-[3px] rounded-l-sm bg-[#4a4a52]" />
+      <span className="absolute -left-[2px] top-[196px] h-12 w-[3px] rounded-l-sm bg-[#4a4a52]" />
+      <span className="absolute -right-[2px] top-[168px] h-16 w-[3px] rounded-r-sm bg-[#4a4a52]" />
 
-      {/* silver titanium frame */}
-      <div className="relative rounded-[2.7rem] bg-gradient-to-b from-[#e7e7ec] to-[#d2d2da] p-[10px] shadow-[0_40px_90px_-30px_rgba(20,15,50,0.4)] ring-1 ring-inset ring-white/60">
+      {/* black titanium frame */}
+      <div className="relative rounded-[2.7rem] bg-gradient-to-b from-[#3a3a42] to-[#1d1d22] p-[10px] shadow-[0_40px_90px_-30px_rgba(0,0,0,0.85)] ring-1 ring-inset ring-white/10">
         {/* screen */}
-        <div className="relative flex aspect-[9/19.5] flex-col overflow-hidden rounded-[2.05rem] bg-[#f7f5fd]">
+        <div className="relative flex aspect-[9/19.5] flex-col overflow-hidden rounded-[2.05rem] bg-bg">
           {chrome ? (
             <>
               {/* dynamic island */}

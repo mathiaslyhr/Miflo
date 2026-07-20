@@ -3,7 +3,7 @@
 import { useActionState, useState } from "react";
 import { useFormStatus } from "react-dom";
 import { submitFeedbackAction, type FeedbackState } from "./actions";
-import { GlassCard, GlassSurface } from "@/components/glass";
+import { Card, CTRL } from "@/components/ui";
 
 const CATEGORIES = [
   { value: "general", label: "General" },
@@ -19,7 +19,7 @@ function SubmitButton() {
     <button
       type="submit"
       disabled={pending}
-      className="tap shrink-0 cursor-pointer select-none rounded-full bg-[#0d0d16] px-5 py-2.5 text-sm font-medium text-white shadow-[0_0_0_1.5px_rgba(255,255,255,0.25),0_10px_24px_-12px_rgba(20,15,50,0.5)] transition-transform duration-200 ease-[cubic-bezier(0.34,1.25,0.64,1)] hover:scale-[1.03] active:scale-[0.96] active:opacity-90 disabled:opacity-50"
+      className={`${CTRL} shrink-0 rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-ink disabled:pointer-events-none disabled:opacity-50`}
     >
       {pending ? "Sending…" : "Send feedback"}
     </button>
@@ -32,19 +32,19 @@ export function FeedbackForm() {
 
   if (state.status === "success") {
     return (
-      <GlassCard className="p-8 text-center">
-        <h2 className="text-2xl font-medium text-[#0d0d16]">Thank you</h2>
-        <p className="mx-auto mt-2 max-w-sm text-[#0d0d16]/55">
+      <Card className="!p-8 text-center">
+        <h2 className="text-2xl font-medium text-ink">Thank you</h2>
+        <p className="mx-auto mt-2 max-w-sm text-muted">
           Your feedback helps shape Miflo. We read everything.
         </p>
-      </GlassCard>
+      </Card>
     );
   }
 
   return (
-    <form action={formAction} className="flex flex-col gap-5">
+    <form action={formAction} className="flex flex-col gap-6">
       <fieldset>
-        <legend className="mb-3 text-sm text-[#0d0d16]/55">
+        <legend className="mb-3 text-sm text-muted">
           What&apos;s this about?
         </legend>
         <div className="grid grid-cols-3 gap-3">
@@ -53,10 +53,10 @@ export function FeedbackForm() {
             return (
               <label
                 key={c.value}
-                className={`tap cursor-pointer select-none rounded-full border px-4 py-3 text-center text-sm font-medium transition-transform duration-200 ease-[cubic-bezier(0.34,1.25,0.64,1)] hover:scale-[1.03] active:scale-[0.96] ${
+                className={`${CTRL} rounded-full border px-4 py-3 text-center text-sm font-medium ${
                   selected
-                    ? "border-transparent bg-[#0d0d16] text-white"
-                    : "border-white/60 bg-white/40 text-[#0d0d16]/60 backdrop-blur-md hover:text-[#0d0d16]"
+                    ? "border-primary bg-primary text-white"
+                    : "border-rim-2 bg-surface-2 text-muted hover:bg-surface-3 hover:text-ink"
                 }`}
               >
                 <input
@@ -75,23 +75,20 @@ export function FeedbackForm() {
       </fieldset>
 
       <div>
-        <label
-          htmlFor="message"
-          className="mb-3 block text-sm text-[#0d0d16]/55"
-        >
+        <label htmlFor="message" className="mb-3 block text-sm text-muted">
           Your message
         </label>
-        <GlassSurface radiusClass="rounded-3xl" scale={0.28} className="p-1.5">
-          <textarea
-            id="message"
-            name="message"
-            required
-            maxLength={1000}
-            rows={6}
-            placeholder="Questions, bugs, or things you'd love to see in Miflo"
-            className="w-full resize-y rounded-3xl bg-transparent px-4 py-3 text-[#0d0d16] placeholder:text-[#0d0d16]/45 focus:outline-none"
-          />
-        </GlassSurface>
+        <textarea
+          id="message"
+          name="message"
+          required
+          maxLength={1000}
+          rows={6}
+          placeholder="Questions, bugs, or things you'd love to see in Miflo"
+          // placeholder:text-muted, not faint: placeholder text has to clear
+          // the same 4.5:1 as body copy.
+          className="w-full resize-y rounded-2xl border border-rim-2 bg-surface-2 px-4 py-3 text-ink placeholder:text-muted"
+        />
       </div>
 
       {/* Honeypot: hidden from humans, catches bots. */}
@@ -110,7 +107,7 @@ export function FeedbackForm() {
 
       <div className="flex items-center gap-4">
         <SubmitButton />
-        <span className="text-sm text-[#0d0d16]/45">No account needed.</span>
+        <span className="text-sm text-muted">No account needed.</span>
       </div>
     </form>
   );

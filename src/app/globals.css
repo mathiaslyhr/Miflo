@@ -1,22 +1,41 @@
 @import "tailwindcss";
 
 @theme {
-  /* Light "Gradient / Glass" palette (design.md). One near-black ink at varying
-     opacity for text; soft, near-white surfaces; brand purple accent. */
-  --color-bg: #ffffff;
-  --color-surface: #ffffff;
-  --color-surface-2: #f1eefb;
-  --color-divider: rgba(13, 13, 22, 0.1);
-  --color-ink: #0d0d16;
-  --color-muted: #5b5b6b;
-  /* Main brand color (design.md §3). --color-accent is kept as an alias for
-     backward compatibility; --color-primary is the semantic name going forward. */
-  --color-primary: #6260f6;
-  --color-primary-ink: #4a48d6;
-  --color-accent: #6260f6;
-  --color-accent-ink: #4a48d6;
-  --color-success: #32c36c;
-  --color-error: #f0544a;
+  /*
+   * Dark palette, ported from the app (MifloApp `src/theme/colors.ts` → skin1).
+   * Three rules govern every surface here:
+   *   1. Elevation is brightness, not shadow. Closer to the reader = lighter.
+   *   2. A rim is always lighter than the surface it sits on, never darker.
+   *   3. Never skip a step on the ladder.
+   * The page sits one step below the app's #121212 so cards lift off it on a
+   * large screen, where we can't lean on a device bezel to frame the content.
+   */
+  --color-bg: #0b0b0f;
+  --color-surface: #17171c;
+  --color-surface-2: #202027;
+  --color-surface-3: #2a2a33;
+
+  --color-rim: #262630;
+  --color-rim-2: #33333d;
+  --color-divider: #22222b;
+
+  /* One light ink, two dimmer steps. See the note on opacity tiers below. */
+  --color-ink: #f5f5f5;
+  --color-muted: #a3a3a3;
+  --color-faint: #6e6e6e;
+
+  /*
+   * Brand purple. `accent-ink` is the lighter tint used for accent *text* on
+   * dark — the inverse of the old light theme, where it was a darker purple.
+   */
+  --color-primary: #6260ff;
+  --color-primary-ink: #8583ff;
+  --color-accent: #6260ff;
+  --color-accent-ink: #8583ff;
+
+  --color-success: #3fd07c;
+  --color-error: #ff6a61;
+  --color-info: #5b9cff;
 
   --font-sans: var(--font-satoshi), ui-sans-serif, system-ui, sans-serif;
 
@@ -29,6 +48,19 @@
   --animate-rise: rise 0.7s var(--ease-out-quint) both;
   --animate-float: float 6s ease-in-out infinite;
 }
+
+/*
+ * Text colour: use the three ink tokens, not opacity tiers.
+ * The light theme leaned on `text-ink/55`, `/45`, `/70`. Translucent light text
+ * over a dark ground reads muddy and, worse, lets the surface underneath show
+ * through — which breaks rule 1 above, since a "dimmer" label on a *raised*
+ * surface would then be brighter than the same label on the page. Solid
+ * ink → muted → faint keeps text legibility independent of elevation.
+ *
+ * Contrast against --color-bg: ink 18.1:1, muted 9.3:1, faint 4.0:1.
+ * `faint` clears 3:1 for large text only — it is for non-essential meta
+ * (captions, timestamps, counters), never body copy.
+ */
 
 @keyframes rise {
   from {
@@ -52,7 +84,7 @@
   }
 }
 
-/* Drifting mesh-gradient blobs (design.md §4). */
+/* The single purple bloom behind the hero (HeroGlow). */
 @keyframes dropDrift {
   0%,
   100% {
@@ -84,64 +116,92 @@
   animation: scrollHint 2.4s ease-in-out infinite;
 }
 
+/*
+ * A round timer draining over the length of a turn (AnimatedMeter).
+ * Two paired animations on the same element and duration: the width runs down,
+ * and the tint steps through the countdown scale in the same five bands
+ * `timerColor()` uses, so the CSS and the JS agree on when green becomes red.
+ * No JS, no client component, no rAF loop on a marketing page.
+ */
+@keyframes drain {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
+}
+@keyframes drainTint {
+  0%,
+  20% {
+    background-color: var(--color-timer-1);
+  }
+  20.01%,
+  40% {
+    background-color: var(--color-timer-2);
+  }
+  40.01%,
+  60% {
+    background-color: var(--color-timer-3);
+  }
+  60.01%,
+  80% {
+    background-color: var(--color-timer-4);
+  }
+  80.01%,
+  100% {
+    background-color: var(--color-timer-5);
+  }
+}
+.drain-bar {
+  animation:
+    drain var(--drain-duration, 12s) linear infinite,
+    drainTint var(--drain-duration, 12s) step-end infinite;
+}
+
 /* Clean, native-feeling taps: no grey flash on touch. */
 .tap {
   -webkit-tap-highlight-color: transparent;
 }
 
-/* Liquid-glass surface (design.md §5b): clear fill + a bright rim that follows
-   each element's border-radius. The refraction itself is a per-element
-   backdrop-filter set inline by useLiquidGlass (Chromium); the blur fallback
-   keeps Safari/Firefox looking frosted. */
-.lg-surface {
-  background: rgba(255, 255, 255, 0.1);
-  box-shadow:
-    0 0 0 1px rgba(255, 255, 255, 0.6),
-    0 16px 32px -10px rgba(20, 15, 50, 0.18);
-}
-.lg-surface--light {
-  background: rgba(255, 255, 255, 0.05);
-}
-
 /*
- * Countdown scale: full → empty (dark green → light green → yellow → orange →
- * red). Kept in :root (not @theme) because they're referenced only via raw
- * var() in JS, and Tailwind tree-shakes unused @theme variables in dev.
+ * Countdown scale: full → empty (green → yellow → orange → red), matching the
+ * app's `timer` ramp. Kept in :root (not @theme) because they're referenced
+ * only via raw var() in JS, and Tailwind tree-shakes unused @theme variables.
  */
 :root {
-  --color-timer-1: #32c36c;
+  --color-timer-1: #3fd07c;
   --color-timer-2: #7ed99a;
   --color-timer-3: #f5c451;
   --color-timer-4: #f2913d;
-  --color-timer-5: #f0544a;
+  --color-timer-5: #ff6a61;
 }
 
 html {
   background-color: var(--color-bg);
-  color-scheme: light;
+  color-scheme: dark;
 }
 
 body {
-  background-color: #ffffff;
+  background-color: var(--color-bg);
   color: var(--color-ink);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
 }
 
 ::selection {
-  background-color: color-mix(in oklab, var(--color-accent) 25%, transparent);
+  background-color: color-mix(in oklab, var(--color-primary) 45%, transparent);
   color: var(--color-ink);
 }
 
-/* Accent focus ring, visible on the light gradient surfaces. */
+/* Focus ring uses the lighter purple — #6260ff is too dim against #0b0b0f. */
 :focus-visible {
-  outline: 2px solid var(--color-accent);
+  outline: 2px solid var(--color-accent-ink);
   outline-offset: 2px;
   border-radius: 4px;
 }
 
-/* Text fields don't get the accent ring (design.md: fields use focus, not a
-   coloured outline). The glass field wrapper shows a subtle ink rim instead. */
+/* Fields show a brightened rim on focus rather than an outline ring. */
 input:focus,
 input:focus-visible,
 textarea:focus,
@@ -149,11 +209,7 @@ textarea:focus-visible,
 select:focus,
 select:focus-visible {
   outline: none;
-}
-div.lg-surface:focus-within {
-  box-shadow:
-    0 0 0 1.5px rgba(13, 13, 22, 0.22),
-    0 16px 32px -10px rgba(20, 15, 50, 0.18);
+  border-color: var(--color-accent-ink);
 }
 
 @media (prefers-reduced-motion: reduce) {

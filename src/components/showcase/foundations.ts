@@ -4,24 +4,51 @@
  */
 
 export const COLOR_TOKENS = [
-  { name: "bg", hex: "#ffffff", cls: "bg-bg" },
-  { name: "surface", hex: "#ffffff", cls: "bg-surface" },
-  { name: "surface-2", hex: "#f1eefb", cls: "bg-surface-2" },
-  { name: "divider", hex: "rgba(13,13,22,0.1)", cls: "bg-divider" },
-  { name: "ink", hex: "#0d0d16", cls: "bg-ink" },
-  { name: "muted", hex: "#5b5b6b", cls: "bg-muted" },
-  { name: "accent", hex: "#6260f6", cls: "bg-accent" },
-  { name: "accent-ink", hex: "#4a48d6", cls: "bg-accent-ink" },
-  { name: "success", hex: "#32c36c", cls: "bg-success" },
-  { name: "error", hex: "#f0544a", cls: "bg-error" },
+  { name: "bg", hex: "#0b0b0f", cls: "bg-bg" },
+  { name: "surface", hex: "#17171c", cls: "bg-surface" },
+  { name: "surface-2", hex: "#202027", cls: "bg-surface-2" },
+  { name: "surface-3", hex: "#2a2a33", cls: "bg-surface-3" },
+  { name: "rim", hex: "#262630", cls: "bg-rim" },
+  { name: "rim-2", hex: "#33333d", cls: "bg-rim-2" },
+  { name: "divider", hex: "#22222b", cls: "bg-divider" },
+  { name: "ink", hex: "#f5f5f5", cls: "bg-ink" },
+  { name: "muted", hex: "#a3a3a3", cls: "bg-muted" },
+  { name: "faint", hex: "#6e6e6e", cls: "bg-faint" },
+  { name: "primary", hex: "#6260ff", cls: "bg-primary" },
+  { name: "primary-ink", hex: "#8583ff", cls: "bg-primary-ink" },
+  { name: "success", hex: "#3fd07c", cls: "bg-success" },
+  { name: "error", hex: "#ff6a61", cls: "bg-error" },
+  { name: "info", hex: "#5b9cff", cls: "bg-info" },
+];
+
+/**
+ * The elevation ladder, in order. Three rules, ported from the app:
+ * elevation is brightness (not shadow); a rim is always lighter than the
+ * surface it sits on; never skip a step.
+ */
+export const ELEVATION = [
+  { step: "page", surface: "#0b0b0f", rim: "—" },
+  { step: "card", surface: "#17171c", rim: "#262630" },
+  { step: "raised", surface: "#202027", rim: "#33333d" },
+  { step: "pressed", surface: "#2a2a33", rim: "#33333d" },
+];
+
+/**
+ * Text contrast against --color-bg. `faint` clears 3:1 (large text) but not
+ * 4.5:1, so it is for non-essential meta only — never body copy.
+ */
+export const TEXT_TOKENS = [
+  { name: "ink", hex: "#f5f5f5", contrast: "18.1:1", use: "headings, body" },
+  { name: "muted", hex: "#a3a3a3", contrast: "9.3:1", use: "secondary body" },
+  { name: "faint", hex: "#6e6e6e", contrast: "4.0:1", use: "meta, captions" },
 ];
 
 export const TIMER_TOKENS = [
-  { name: "timer-1", hex: "#32c36c", note: "full" },
+  { name: "timer-1", hex: "#3fd07c", note: "full" },
   { name: "timer-2", hex: "#7ed99a", note: "" },
   { name: "timer-3", hex: "#f5c451", note: "half" },
   { name: "timer-4", hex: "#f2913d", note: "" },
-  { name: "timer-5", hex: "#f0544a", note: "empty" },
+  { name: "timer-5", hex: "#ff6a61", note: "empty" },
 ];
 
 export const TYPE_SCALE = [
@@ -56,15 +83,15 @@ export const MOTION = [
   },
   { name: "float", desc: "Idle drift for the hero floating cards, 6s loop." },
   {
-    name: "toast",
-    desc: "In-app toasts drop in from the top under the island, auto-dismiss.",
+    name: "drain",
+    desc: "Round timer: width runs down while the tint steps through the countdown scale (globals.css `.drain-bar`). Pure CSS.",
   },
   {
-    name: "sheet",
-    desc: "The leave-room confirm slides up from the bottom over a scrim.",
+    name: "press",
+    desc: "Every control: scale 0.96 + slight dim on :active, spring back. Hover brightens one rung instead of growing.",
   },
   {
     name: "reduced-motion",
-    desc: "All animation is disabled under prefers-reduced-motion (globals.css).",
+    desc: "All animation is disabled under prefers-reduced-motion (globals.css). The drain bar falls back to a static part-spent amber timer.",
   },
 ];

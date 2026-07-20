@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { SiteHeader } from "@/components/SiteHeader";
-import { Eyebrow } from "@/components/glass";
 
 export const metadata: Metadata = {
   title: "FAQ — Miflo",
@@ -62,22 +61,21 @@ export default function FaqPage() {
       <main className="relative flex-1">
         <section className="relative">
           <div className="relative mx-auto w-full max-w-3xl px-6 py-16 sm:py-24">
-            <Eyebrow>FAQ</Eyebrow>
             <h1
-              className="mt-4 font-medium leading-[1.05] tracking-tight text-[#0d0d16]"
+              className="font-medium leading-[1.05] tracking-tight text-ink"
               style={{ fontSize: "clamp(2.25rem,6vw,3.5rem)" }}
             >
               Good to know.
             </h1>
-            <p className="mt-4 max-w-xl text-lg leading-relaxed text-[#0d0d16]/55">
+            <p className="mt-4 max-w-xl text-lg leading-relaxed text-muted">
               Everything you might want to check before you round up the group
               chat.
             </p>
 
-            <div className="mt-12 flex flex-col divide-y divide-[#0d0d16]/10 border-t border-[#0d0d16]/10">
+            <div className="mt-12 flex flex-col divide-y divide-divider border-t border-divider">
               {FAQS.map((faq) => (
                 <details key={faq.q} className="group py-5">
-                  <summary className="flex cursor-pointer list-none items-center justify-between gap-6 text-lg font-medium text-[#0d0d16] [&::-webkit-details-marker]:hidden">
+                  <summary className="flex cursor-pointer list-none items-center justify-between gap-6 text-lg font-medium text-ink [&::-webkit-details-marker]:hidden">
                     {faq.q}
                     <svg
                       width="20"
@@ -85,7 +83,7 @@ export default function FaqPage() {
                       viewBox="0 0 24 24"
                       fill="none"
                       aria-hidden
-                      className="shrink-0 text-[#0d0d16]/40 transition-transform duration-300 ease-[cubic-bezier(0.34,1.25,0.64,1)] group-open:rotate-45"
+                      className="shrink-0 text-faint transition-transform duration-300 ease-[cubic-bezier(0.34,1.25,0.64,1)] group-open:rotate-45"
                     >
                       <path
                         d="M12 5v14M5 12h14"
@@ -95,7 +93,7 @@ export default function FaqPage() {
                       />
                     </svg>
                   </summary>
-                  <p className="mt-3 max-w-2xl leading-relaxed text-[#0d0d16]/55">
+                  <p className="mt-3 max-w-2xl leading-relaxed text-muted">
                     {faq.a}
                   </p>
                 </details>

@@ -25,8 +25,15 @@ export function FloatingCard({
       className={`absolute z-20 animate-rise ${className}`}
       style={{ animationDelay: `${delay}ms` }}
     >
+      {/*
+        The one place on the site that keeps a shadow. Cards are flat, because
+        on dark a shadow reads as a smudge and brightness carries elevation —
+        but these genuinely hover off the page beside the phone, and the drop
+        shadow is what sells that. Same exception the app makes for its nav
+        island, sheets and toasts.
+      */}
       <div
-        className={`animate-float border border-white/65 bg-white/55 px-3.5 py-3 shadow-[0_20px_40px_-16px_rgba(20,15,50,0.28)] backdrop-blur-xl ${
+        className={`animate-float border border-rim-2 bg-surface px-3.5 py-3 shadow-[0_20px_40px_-16px_rgba(0,0,0,0.65)] ${
           pill ? "rounded-full" : "rounded-card"
         }`}
         style={{ animationDelay: `${delay}ms` }}
